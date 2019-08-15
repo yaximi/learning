@@ -1,6 +1,6 @@
 /**
- * 获取get请求数据
- * 注意：get请求数据量较小，最大只有32k
+ * 接收get请求参数
+ * 注意：get请求发送的参数数据量较小，最大只有32k
  */
 
 const http = require('http');
@@ -21,7 +21,7 @@ http.createServer((req, res) => {
     // console.log(url.parse(req.url, true).query);
 
     let GET = url.parse(req.url, true).query;
-    console.log('get请求数据：', GET);
+    console.log('get请求参数：', GET);
 
     res.end();
 }).listen(8080, () => {

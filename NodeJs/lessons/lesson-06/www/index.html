@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    用户名：
+    <input type="text" id="user">
+    <br>
+    密码：
+    <input type="password" id="pwd">
+    <br>
+    <input type="button" value="注册" id="register">
+    <input type="button" value="登录" id="login">
+
+    <script src="./assets/js/ajax.js"></script>
+    <script>
+        window.onload = function () {
+            var oUser = document.getElementById('user')
+            var oPwd = document.getElementById('pwd')
+            var oRegiter = document.getElementById('register')
+            var oLogin = document.getElementById('login')
+
+            oRegiter.onclick = function () {
+                ajax({
+                    type: 'post',
+                    url: '/user',
+                    data: {
+                        act: 'register',
+                        user: oUser.value,
+                        pwd: oPwd.value
+                    },
+                    success: function (res) {
+                        var data = JSON.parse(res)
+
+                        if (data.ok) {
+                            alert('注册成功')
+                        } else {
+                            alert('注册失败：' + data.msg)
+                        }
+                    },
+                    error: function (err) {
+                        alert('通信错误：' + err)
+                    }
+                })
+            }
+
+            oLogin.onclick = function () {
+                ajax({
+                    type: 'post',
+                    url: '/user',
+                    data: {
+                        act: 'login',
+                        user: oUser.value,
+                        pwd: oPwd.value
+                    },
+                    success: function (res) {
+                        var data = JSON.parse(res)
+
+                        if (data.ok) {
+                            alert('登录成功')
+                        } else {
+                            alert('登录失败：' + data.msg)
+                        }
+                    },
+                    error: function (err) {
+                        alert('通信错误：' + err)
+                    }
+                })
+            }
+        }
+    </script>
+</body>
+</html>
