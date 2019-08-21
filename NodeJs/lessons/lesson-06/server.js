@@ -1,3 +1,7 @@
+/**
+ * get/post请求、接口请求、文件请求
+ */
+
 const http = require('http');
 const fs = require('fs');
 const url = require('url');
