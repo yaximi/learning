@@ -3,7 +3,7 @@
  * 1、HTTP是一个无状态的协议，无法区分用户之间的身份，因此提出来Cookie方案
  * 2、Cookie的处理分为如下几步：
  *  服务器向客户端发送Cookie
- *  浏览器讲Cookie保存
+ *  浏览器将Cookie保存
  *  之后每一次请求浏览器都会将Cookie发向服务器
  * 3、HTTP_Parser会将所有的报文字段解析到req.headers上，服务端通过req.headers.cookie接收Cookie
  * 4、Cookie的格式是 key1=value1;key2=value2 形式的，需要解析

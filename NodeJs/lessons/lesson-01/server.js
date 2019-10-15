@@ -14,18 +14,7 @@
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-    switch (req.url) {
-        case '1.html' :
-            res.write('111');
-            break;
-        case '2.html' :
-            res.write('222');
-            break;
-        default :
-            res.write('404');
-            break;
-    }
-    res.end('bye bye!');
+    res.end('Hello World!')
 });
 
 server.listen(8080, () => {
