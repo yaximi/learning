@@ -1,13 +1,18 @@
 /**
- * express获取get请求参数：直接通过req.query获取get请求参数
+ * 通过next()实现链式操作
  */
 
 const express = require('express');
 
 const server = express();
 
+server.use('/', (req, res, next) => {
+    req.a = 10;
+    next();
+});
+
 server.use('/', (req, res) => {
-    console.log('get请求参数：', req.query);
+   console.log(req.a);
 });
 
 server.listen(8080, () => {
