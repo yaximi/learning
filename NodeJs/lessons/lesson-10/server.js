@@ -36,4 +36,4 @@ server.on('request', (req, res) => {
 
 server.listen(8080, () => {
     console.log('Application is running at http://localhost:8080');
-})
+});
