@@ -1,6 +1,6 @@
 /**
  * express获取post请求参数：
- * 1、使用body-parser中间件：server.use(bodyParser.urlencoded({}))
+ * 1、使用body-parser中间件：server.use(bodyParser.urlencoded({ extended: false, limit: 2*1024*1024 }))
  * 2、通过req.body获取post请求参数
  */
 
