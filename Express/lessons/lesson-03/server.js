@@ -5,11 +5,10 @@
 const express = require('express');
 
 const server = express();
+server.listen(8080, () => {
+    console.log('Application is running at http://localhost:8080');
+});
 
 server.use('/', (req, res) => {
     console.log('get请求参数：', req.query);
-});
-
-server.listen(8080, () => {
-    console.log('Application is running at http://localhost:8080');
 });

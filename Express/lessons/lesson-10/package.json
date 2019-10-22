@@ -1,5 +1,5 @@
 {
-  "name": "lesson-06",
+  "name": "lesson-10",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "consolidate": "^0.15.1",
+    "ejs": "^2.7.1",
     "express": "^4.17.1"
   }
 }

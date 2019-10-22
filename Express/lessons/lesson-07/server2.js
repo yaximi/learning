@@ -1,26 +1,17 @@
 /**
- * express 如何给向客户端发送的 cookie 添加签名（类似加密）？
- *
- * 1、req.secret = '签名字符串'
- *
- * 2、res.cookie(name, value, {
- *     signed: true
- * })
+ * 通过原生方法封装一个获取post请求参数的中间件-my-body-parser
  */
 
 const express = require('express');
+const myBodyParser = require('./libs/my-body-parser');
 
 const server = express();
+server.listen(8080, () => {
+    console.log('Application is running at http://localhost:8080');
+});
+
+server.use(myBodyParser.urlencoded());
 
 server.use('/', (req, res) => {
-    req.secret = 'q1w2e3r4t5y6u7i8o9p0';
-    res.cookie('username', 'xiaoming', {
-        signed: true
-    });
-    res.end();
+    console.info('post请求参数：', req.body);
 });
-
-server.listen(8080, () => {
-   console.log('Application is running at http://localhost:8080');
-});
-

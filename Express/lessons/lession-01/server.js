@@ -16,10 +16,12 @@
  *      server.use(url, (req, res) => {})
  */
 
-
 const express = require('express');
 
 const server = express();
+server.listen(8080, () => {
+    console.log('Application is running at http://localhost:8080');
+});
 
 server.use('/', (req, res) => {
     res.send({
@@ -27,8 +29,4 @@ server.use('/', (req, res) => {
         message: ''
     });
     res.end();
-});
-
-server.listen(8080, () => {
-    console.log('Application is running at http://localhost:8080');
 });

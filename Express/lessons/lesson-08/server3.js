@@ -11,14 +11,13 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 
 const server = express();
+server.listen(8080, () => {
+    console.log('Application is running at http://localhost:8080');
+});
 
 server.use(cookieParser());
 
 server.use('/', (req, res) => {
     console.info('cookie:', req.cookies);
     res.end();
-});
-
-server.listen(8080, () => {
-    console.log('Application is running at http://localhost:8080');
 });
