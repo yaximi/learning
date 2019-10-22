@@ -1,3 +1,7 @@
+/**
+ * 使用express.static处理静态资源请求
+ */
+
 const express = require('express');
 
 const server = express();

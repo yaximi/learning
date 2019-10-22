@@ -12,6 +12,9 @@ server.listen(8080, () => {
     console.log('Application is running at http://localhost:8080');
 });
 
+// static数据
+server.use(express.static('./www'));
+
 // 解析post请求参数
 server.use(bodyParser.urlencoded({
     extended: false
@@ -43,7 +46,7 @@ server.set('views', './views');
 server.engine('html', consolidate.ejs);
 
 // 接受请求
-server.use('/', (req, res, next) => {
+server.use('/', (req, res) => {
     console.info('get请求参数：', req.query);
     console.info('post请求参数：', req.body);
     console.info('post文件上传：', req.files);
@@ -67,14 +70,8 @@ server.use('/', (req, res, next) => {
         })
     }
 
-    next();
-});
-server.use('/index', (req, res) => {
     // 渲染ejs模板
     res.render('index.ejs', {
         name: '小明'
     })
 });
-
-// static数据
-server.use(express.static('./www'));

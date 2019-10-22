@@ -18,16 +18,18 @@ const multerObj = multer({
 });
 server.use(multerObj.any());
 server.use('/', (req, res) => {
-    const files = req.files;
-    files.forEach(file => {
-        let oldPath = file.path;
-        let newPath = oldPath + path.extname(file.originalname);
-        fs.rename(oldPath, newPath, (err) => {
-            if (err) {
-                console.info('重命名失败：', err);
-            } else {
-                console.info('重命名成功');
-            }
-        })
-    });
+    const files = req.files || [];
+    if (files.length > 0) {
+        files.forEach(file => {
+            let oldPath = file.path;
+            let newPath = oldPath + path.extname(file.originalname);
+            fs.rename(oldPath, newPath, (err) => {
+                if (err) {
+                    console.info('重命名失败：', err);
+                } else {
+                    console.info('重命名成功');
+                }
+            })
+        });
+    }
 });

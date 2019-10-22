@@ -28,5 +28,4 @@ server.use('/', (req, res) => {
         ok: true,
         message: ''
     });
-    res.end();
 });

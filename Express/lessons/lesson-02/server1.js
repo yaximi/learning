@@ -1,5 +1,5 @@
 /**
- * 使用express-static中间件获取静态文件：express.use(expressStatic('./www'))
+ * 使用express-static中间件处理静态资源请求：express.use(expressStatic('./www'))
  */
 
 const express = require('express');
