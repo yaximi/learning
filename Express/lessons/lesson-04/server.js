@@ -12,17 +12,20 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-
 const server = express();
-server.listen(8080, () => {
-    console.log('Application is running at http://localhost:8080');
-});
+
+server.use(express.static('./www'));
 
 server.use(bodyParser.urlencoded({
     extended: false,
     limit: 2*1024*1024
 }));
 
-server.use('/', (req, res) => {
+server.post('/', (req, res) => {
     console.info('post请求参数：', req.body);
+    res.end();
+});
+
+server.listen(8080, () => {
+    console.log('http://localhost:8080/form-post.html');
 });

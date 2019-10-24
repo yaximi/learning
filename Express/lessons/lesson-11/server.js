@@ -6,13 +6,9 @@ const cookieSession = require('cookie-session');
 const consolidate = require('consolidate');
 const fs = require('fs');
 const path = require('path');
-
 const server = express();
-server.listen(8080, () => {
-    console.log('Application is running at http://localhost:8080');
-});
 
-// static数据
+// 托管静态资源
 server.use(express.static('./www'));
 
 // 解析post请求参数
@@ -46,7 +42,7 @@ server.set('views', './views');
 server.engine('html', consolidate.ejs);
 
 // 接受请求
-server.use('/', (req, res) => {
+server.use((req, res, next) => {
     console.info('get请求参数：', req.query);
     console.info('post请求参数：', req.body);
     console.info('post文件上传：', req.files);
@@ -63,15 +59,22 @@ server.use('/', (req, res) => {
             fs.rename(oldPath, newPath, (err) => {
                 if (err) {
                     console.info('重命名失败：', err);
-                } else {
-                    console.info('重命名成功');
                 }
             })
         })
     }
 
+    next();
+});
+
+server.use('/', (req, res) => {
     // 渲染ejs模板
     res.render('index.ejs', {
         name: '小明'
-    })
+    });
+});
+
+// 监听8080端口
+server.listen(8080, () => {
+    console.log('http://localhost:8080');
 });

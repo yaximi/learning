@@ -4,14 +4,10 @@
 
 const express = require('express');
 const consolidate = require('consolidate');
-
 const server = express();
-server.listen(8080, () => {
-   console.log('Application is running at http://localhost:8080');
-});
 
 server.set('view engine', 'html');
-server.set('views', './template');
+server.set('views', './views');
 server.engine('html', consolidate.ejs);
 
 server.use('/', (req, res) => {
@@ -22,3 +18,6 @@ server.use('/', (req, res) => {
     })
 });
 
+server.listen(8080, () => {
+    console.log('http://localhost:8080');
+});

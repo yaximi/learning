@@ -9,7 +9,7 @@
  *          dest: './www/upload'
  *      });
  *
- * 3、use返回对象中的方法，如：any()
+ * 3、use返回对象中的方法，如：any() / single()
  *      server.use(obj.any());
  *
  * 4、通过req.files获取上传的文件数组
@@ -18,16 +18,20 @@
 
 const express = require('express');
 const multer = require('multer');
-
 const server = express();
-server.listen(8080, () => {
-    console.log('Application is running at http://localhost:8080');
-});
+
+server.use(express.static('./www'));
 
 const multerObj = multer({
     dest: './www/upload'
 });
 server.use(multerObj.any());
-server.use('/', (req, res) => {
+
+server.post('/', (req, res) => {
     console.info('files：', req.files);
+    res.end();
+});
+
+server.listen(8080, () => {
+    console.log('http://localhost:8080/form-upload.html');
 });

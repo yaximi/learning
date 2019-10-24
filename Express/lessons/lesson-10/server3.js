@@ -4,23 +4,24 @@
 
 const express = require('express');
 const ejs = require('ejs');
-
 const server = express();
-server.listen(8080, () => {
-    console.log('Application is running at http://localhost:8080');
-});
 
 server.use('/', (req, res) => {
-    ejs.renderFile('./template/index2.ejs', {
+    ejs.renderFile('./views/index2.ejs', {
         showTitle: true,
         title: '111',
         content: '<div>222</div>'
     }, (err, data) => {
         if (err) {
             console.info('出错了：', err);
+            res.end();
         } else {
             console.info('成功了：', data);
             res.send(data);
         }
     });
+});
+
+server.listen(8080, () => {
+    console.log('http://localhost:8080');
 });

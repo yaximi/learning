@@ -3,21 +3,17 @@
  *
  * 1、server.set('view engine', 'html');
  *
- * 2、server.set('views', './template');
+ * 2、server.set('views', './views');
  *
  * 3、server.engine('html', ejs.__express);
  */
 
 const express = require('express');
 const ejs = require('ejs');
-
 const server = express();
-server.listen(8080, () => {
-    console.log('Application is running at http://localhost:8080');
-});
 
 server.set('view engine', 'html');
-server.set('views', './template');
+server.set('views', './views');
 server.engine('html', ejs.__express);
 
 server.use('/', (req, res) => {
@@ -26,4 +22,8 @@ server.use('/', (req, res) => {
         title: '111',
         content: '<div>222</div>'
     });
+});
+
+server.listen(8080, () => {
+    console.log('http://localhost:8080');
 });

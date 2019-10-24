@@ -7,7 +7,7 @@
 
 const ejs = require('ejs');
 
-ejs.renderFile('./template/index2.ejs', {
+ejs.renderFile('./views/index2.ejs', {
     showTitle: true,
     title: '111',
     content: '<div>222</div>'

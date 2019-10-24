@@ -7,17 +7,16 @@ const express = require('express');
 const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
-
 const server = express();
-server.listen(8080, () => {
-    console.log('Application is running at http://localhost:8080');
-});
+
+server.use(express.static('./www'));
 
 const multerObj = multer({
     dest: './www/upload'
 });
 server.use(multerObj.any());
-server.use('/', (req, res) => {
+
+server.post('/', (req, res) => {
     const files = req.files || [];
     if (files.length > 0) {
         files.forEach(file => {
@@ -26,10 +25,13 @@ server.use('/', (req, res) => {
             fs.rename(oldPath, newPath, (err) => {
                 if (err) {
                     console.info('重命名失败：', err);
-                } else {
-                    console.info('重命名成功');
                 }
-            })
+            });
         });
     }
+    res.end();
+});
+
+server.listen(8080, () => {
+    console.log('http://localhost:8080/form-upload.html');
 });

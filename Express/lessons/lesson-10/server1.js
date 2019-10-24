@@ -4,7 +4,7 @@
 
 const ejs = require('ejs');
 
-ejs.renderFile('./template/index1.ejs', {
+ejs.renderFile('./views/index1.ejs', {
     name: '小明'
 }, (err, data) => {
     if (err) {
