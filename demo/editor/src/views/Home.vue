@@ -22,7 +22,7 @@
       </label>
       <div
         class="publish"
-        @click.stop.prevent="publish"
+        @click="publish"
       >
         <span>编辑好了</span>
         <i class="iconfont icon-duihao"></i>
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { upload } from 'common/api'
+import { upload, mysubmit } from 'common/api'
 import { browserType } from 'common/utils'
 
 export default {
@@ -69,8 +69,16 @@ export default {
     // 发布
     publish () {
       let oTextarea = document.getElementById('textarea')
-      let innerHtmlStr = oTextarea.innerHTML + ''
-      console.info(innerHtmlStr)
+      let params = {
+        richText: oTextarea.innerHTML + ''
+      }
+      mysubmit(params)
+        .then(res => {
+          console.info(res)
+        })
+        .catch(err => {
+          console.error(err)
+        })
     },
 
     // 创建img标签

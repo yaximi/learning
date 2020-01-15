@@ -3,26 +3,37 @@
  * 通过fs.rename(oldPath, newPath, callback)方法将文件名改成带扩展名的形式
  */
 
-const express = require('express');
-const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
+const bodyParser = require('body-parser');
+const multer = require('multer');
+const express = require('express');
 const server = express();
 
 server.use(express.static('./www'));
 
-const multerObj = multer({
+server.use(bodyParser.urlencoded({
+    extended: false
+}));
+
+server.use(multer({
     dest: './www/upload'
-});
-server.use(multerObj.any());
+}).any());
+
+server.all('*', (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    res.header("X-Powered-By",' 3.2.1')
+    res.header("Content-Type", "application/json;charset=utf-8");
+    next();
+})
 
 server.post('/upload', (req, res) => {
     const file = req.files[0];
     let oldPath = file.path;
     let newPath = oldPath + path.extname(file.originalname);
     fs.rename(oldPath, newPath, (err) => {
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
         if (err) {
             res.json({
                 error: '1',
@@ -40,6 +51,15 @@ server.post('/upload', (req, res) => {
         }
     })
 });
+
+server.post('/submit', (req, res) => {
+    console.info('post请求参数：', req.body);
+    res.json({
+        error: '0',
+        message: '',
+        data: {}
+    })
+})
 
 server.listen(8888, () => {
     console.log('http://localhost:8888');
