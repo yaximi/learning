@@ -15,6 +15,7 @@ server.use(express.static('./www'));
 server.use(bodyParser.urlencoded({
     extended: false
 }));
+server.use(bodyParser.json());
 
 server.use(multer({
     dest: './www/upload'
@@ -22,14 +23,14 @@ server.use(multer({
 
 server.all('*', (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-    res.header("X-Powered-By",' 3.2.1')
+    res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length,Authorization,Accept,X-Requested-With");
+    res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+    res.header("X-Powered-By", " 3.2.1");
     res.header("Content-Type", "application/json;charset=utf-8");
     next();
 })
 
-server.post('/upload', (req, res) => {
+server.post('/api/upload', (req, res) => {
     const file = req.files[0];
     let oldPath = file.path;
     let newPath = oldPath + path.extname(file.originalname);
@@ -52,7 +53,8 @@ server.post('/upload', (req, res) => {
     })
 });
 
-server.post('/submit', (req, res) => {
+server.post('/api/submit', (req, res) => {
+    console.info('post请求参数：', req.headers);
     console.info('post请求参数：', req.body);
     res.json({
         error: '0',

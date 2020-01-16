@@ -1,7 +1,8 @@
+import axios from 'axios'
 const baseUrl = 'http://10.176.168.77:8888'
 
 const upload = formData => new Promise((resolve, reject) => {
-  fetch(`${baseUrl}/upload`, {
+  fetch(`${baseUrl}/api/upload`, {
     method: 'POST',
     body: formData
   }).then(res => res.json())
@@ -18,14 +19,13 @@ const upload = formData => new Promise((resolve, reject) => {
 })
 
 const mysubmit = params => new Promise((resolve, reject) => {
-  fetch(`${baseUrl}/submit`, {
-    method: 'POST',
-    body: {
-      'rich_text': (params.richText || '') + ''
-    }
-  }).then(res => res.json())
+  axios.post(`${baseUrl}/api/submit`, {
+    'user_code': (params.userCode || '') + '',
+    'nickname': (params.nickname || '') + '',
+    'rich_text': (params.richText || '') + ''
+  })
     .then(res => {
-      if (res.error === '0') {
+      if (res.data.error === '0') {
         resolve(res.data)
       } else {
         reject(res)

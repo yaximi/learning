@@ -70,6 +70,8 @@ export default {
     publish () {
       let oTextarea = document.getElementById('textarea')
       let params = {
+        userCode: '666666',
+        nickname: '小明',
         richText: oTextarea.innerHTML + ''
       }
       mysubmit(params)
