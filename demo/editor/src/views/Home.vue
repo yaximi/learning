@@ -54,10 +54,10 @@ export default {
         return
       }
       let formData = new FormData()
-      formData.append('file', files[0])
+      formData.append('img', files[0])
       upload(formData)
         .then(res => {
-          let oImg = this.createImg(res.url)
+          let oImg = this.createImg(res.data.url)
           this.insertImg(oImg)
           oFile.value = ''
         })

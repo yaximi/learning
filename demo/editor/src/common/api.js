@@ -1,16 +1,17 @@
 import axios from 'axios'
-const baseUrl = 'http://10.176.168.77:8888'
+const baseUrl = 'http://localhost:8888'
 
-const upload = formData => new Promise((resolve, reject) => {
-  fetch(`${baseUrl}/api/upload`, {
-    method: 'POST',
-    body: formData
-  }).then(res => res.json())
+const upload = (formData) => new Promise((resolve, reject) => {
+  axios.post(`${baseUrl}/api/upload`, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  })
     .then(res => {
-      if (res.error === '0') {
+      if (res.data.error === '0') {
         resolve(res.data)
       } else {
-        reject(res)
+        reject(res.data)
       }
     })
     .catch(err => {
@@ -28,7 +29,7 @@ const mysubmit = params => new Promise((resolve, reject) => {
       if (res.data.error === '0') {
         resolve(res.data)
       } else {
-        reject(res)
+        reject(res.data)
       }
     })
     .catch(err => {

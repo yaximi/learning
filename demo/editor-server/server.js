@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const express = require('express');
 const server = express();
+const baseUrl = 'http://localhost:8888';
 
 server.use(express.static('./www'));
 
@@ -46,7 +47,7 @@ server.post('/api/upload', (req, res) => {
                 error: '0',
                 message: '',
                 data: {
-                    url: `http://10.176.168.77:8888/upload/${path.parse(newPath).base}`
+                    url: `${baseUrl}/upload/${path.parse(newPath).base}`
                 }
             })
         }
@@ -54,7 +55,6 @@ server.post('/api/upload', (req, res) => {
 });
 
 server.post('/api/submit', (req, res) => {
-    console.info('post请求参数：', req.headers);
     console.info('post请求参数：', req.body);
     res.json({
         error: '0',
