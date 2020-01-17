@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { upload, mysubmit } from 'common/api'
+import { upload, submit } from 'common/api'
 import { browserType } from 'common/utils'
 
 export default {
@@ -70,13 +70,13 @@ export default {
     publish () {
       let oTextarea = document.getElementById('textarea')
       let params = {
-        userCode: '666666',
+        userCode: '000001',
         nickname: '小明',
         richText: oTextarea.innerHTML + ''
       }
-      mysubmit(params)
-        .then(res => {
-          console.info(res)
+      submit(params)
+        .then(() => {
+          console.info(oTextarea.innerHTML + '')
         })
         .catch(err => {
           console.error(err)

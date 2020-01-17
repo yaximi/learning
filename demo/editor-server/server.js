@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const express = require('express');
 const server = express();
-const baseUrl = 'http://localhost:8888';
+const address = 'http://10.176.168.77:8888';
 
 server.use(express.static('./www'));
 
@@ -47,7 +47,7 @@ server.post('/api/upload', (req, res) => {
                 error: '0',
                 message: '',
                 data: {
-                    url: `${baseUrl}/upload/${path.parse(newPath).base}`
+                    url: `${address}/upload/${path.parse(newPath).base}`
                 }
             })
         }
@@ -64,5 +64,5 @@ server.post('/api/submit', (req, res) => {
 })
 
 server.listen(8888, () => {
-    console.log('http://localhost:8888');
+    console.log(address);
 });
