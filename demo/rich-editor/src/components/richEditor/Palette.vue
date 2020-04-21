@@ -29,17 +29,19 @@
     <div>主题颜色</div>
     <div class="interval"></div>
     <div>
-      <template v-for="(item, index) in colors.slice(10)">
+      <template
+        v-for="(item, index) in colors.slice(10)"
+      >
         <span
           class="color-block"
-          :key="index"
+          :key="'color-block-' + index"
           :style="{background: item}"
           @click.stop.prevent="onChoose(item)"
         >
         </span>
         <br
           v-if="(index + 1) % 10 === 0"
-          :key="index"
+          :key="'interval-' + index"
         />
       </template>
     </div>
@@ -151,8 +153,8 @@ export default {
     border-radius: 12px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.6);
     position: absolute;
-    left: 40px;
-    top: 205px;
+    left: 0px;
+    top: 90px;
     z-index: 2;
 
     .input {

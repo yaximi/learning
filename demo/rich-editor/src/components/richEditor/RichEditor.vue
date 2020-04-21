@@ -1,12 +1,14 @@
 <template>
   <div class="rich-editor">
     <div class="menu-list">
-      <div
+      <button
         class="menu-item"
+        type="button"
         v-for="(menu, index) in menuList"
-        :key="index"
+        :key="'menu-item-' + index"
         @click="edit(menu)"
       >
+        <!-- 插入图片按钮 -->
         <label
           for="file"
           v-if="menu.command === 'insertImage'"
@@ -22,11 +24,15 @@
             @change="uploadImg"
           >
         </label>
+
+        <!-- 按钮 -->
         <i
           :class="['iconfont', menu.icon]"
           v-else
         >
         </i>
+
+        <!-- 下拉选择框 -->
         <selection
           v-if="
             ['fontName', 'fontSize'].includes(menu.command) &&
@@ -37,18 +43,29 @@
           :options="selection.options"
           @select="selection.selectFunc"
         />
-      </div>
+      </button>
     </div>
+
+    <!-- 文本域 -->
     <div
       class="textarea"
       ref="textarea"
       contenteditable="true"
-      @blur="onBlur"
+      @blur="saveRange"
     >
     </div>
+
+    <!-- 调色盘 -->
     <palette
       v-if="palette.show"
       @choose="palette.chooseFunc"
+    />
+
+    <!-- 链接输入框 -->
+    <link-input
+      v-if="linkInput.show"
+      @sure="linkInput.sureFunc"
+      @close="linkInput.closeFunc"
     />
   </div>
 </template>
@@ -57,11 +74,13 @@
 import { upload } from '../../common/api'
 import Selection from './Selection'
 import Palette from './Palette'
+import LinkInput from './LinkInput'
 export default {
   name: 'RichEditor',
   components: {
     Selection,
-    Palette
+    Palette,
+    LinkInput
   },
   data () {
     return {
@@ -176,13 +195,20 @@ export default {
         command: '',
         chooseFunc: () => {}
       },
+      linkInput: {
+        show: false,
+        closeFunc: () => {},
+        sureFunc: () => {}
+      },
       range: null
     }
   },
   methods: {
+    // 点击按钮编辑内容
     edit (menu) {
       if (['fontName', 'fontSize'].includes(menu.command)) {
         this.palette.show = false
+        this.linkInput.show = false
         if (this.selection.command !== menu.command) {
           this.selection.show = true
         } else {
@@ -202,6 +228,7 @@ export default {
       }
       if (['foreColor', 'backColor'].includes(menu.command)) {
         this.selection.show = false
+        this.linkInput.show = false
         if (this.palette.command !== menu.command) {
           this.palette.show = true
         } else {
@@ -216,35 +243,94 @@ export default {
         return
       }
       if (menu.command === 'insertImage') {
+        this.selection.show = false
+        this.palette.show = false
+        this.linkInput.show = false
         return
       }
       if (menu.command === 'createLink') {
+        this.selection.show = false
+        this.palette.show = false
+        this.linkInput.show = !this.linkInput.show
+        this.linkInput.closeFunc = this.closeLinkInput
+        this.linkInput.sureFunc = this.createLink
         return
       }
       this.selection.show = false
       this.palette.show = false
+      this.linkInput.show = false
       this.execCommand(menu.command)
     },
+
+    // 回调 - 选择字体类型
     selectFontName (fontName, index) {
-      console.info('fontName:', fontName)
       this.selection.show = false
       this.execCommand('fontName', fontName)
     },
+
+    // 回调 - 选择字体大小
     selectFontSize (fontSize, index) {
-      console.info('fontSize:', fontSize)
       this.selection.show = false
       this.execCommand('fontSize', index + 1)
     },
+
+    // 回调 - 选择字体颜色
     chooseForeColor (color) {
-      console.info('foreColor:', color)
       this.palette.show = false
       this.execCommand('foreColor', color)
     },
+
+    // 回调 - 选择背景颜色
     chooseBackColor (color) {
-      console.info('backColor:', color)
       this.palette.show = false
       this.execCommand('backColor', color)
     },
+
+    // 回调 - 关闭链接输入框
+    closeLinkInput () {
+      this.linkInput.show = false
+    },
+
+    // 回调 - 确认输入的链接
+    createLink (linkText, linkUrl) {
+      this.linkInput.show = false
+      this.restoreSelection()
+      this.insertLink(linkText, linkUrl)
+    },
+
+    // 插入链接
+    insertLink (text, url) {
+      let oLink = `<a href=${url} target="_blank" contenteditable="false">${text}</a>`
+      document.execCommand('insertHTML', false, oLink)
+    },
+
+    // 上传图片
+    uploadImg () {
+      let oFile = document.getElementById('file')
+      let files = oFile.files || []
+      if (files.length === 0) {
+        return
+      }
+      let formData = new FormData()
+      formData.append('img', files[0])
+      upload(formData)
+        .then(res => {
+          this.restoreSelection()
+          this.insertImg(res.data.url)
+          oFile.value = ''
+        })
+        .catch(err => {
+          console.error(err)
+        })
+    },
+
+    // 插入图片
+    insertImg (url) {
+      let oImg = `<img src=${url} style="max-width:100%" alt="">`
+      document.execCommand('insertHTML', false, oImg)
+    },
+
+    // 移动端execCommand
     execCommand (command, value) {
       if (this.range) {
         let selection = window.getSelection()
@@ -254,36 +340,13 @@ export default {
         selection.removeAllRanges()
         selection.addRange(this.range)
       } else {
-        this.$refs.textarea.focus()
+        this.setCursorAtEnd()
       }
       document.execCommand(command, false, value)
     },
-    uploadImg () {
-      let oFile = document.getElementById('file')
-      let files = oFile.files || []
-      if (files.length <= 0) {
-        return
-      }
-      let formData = new FormData()
-      formData.append('img', files[0])
-      upload(formData)
-        .then(res => {
-          if (this.range) {
-            let selection = window.getSelection()
-            selection.removeAllRanges()
-            selection.addRange(this.range)
-          } else {
-            this.$refs.textarea.focus()
-          }
-          let oImg = `<img src=${res.data.url} style="max-width:100%" alt="">`
-          document.execCommand('insertHTML', false, oImg)
-          oFile.value = ''
-        })
-        .catch(err => {
-          console.error(err)
-        })
-    },
-    onBlur () {
+
+    // 当文本域失去焦点时，保存selection range
+    saveRange () {
       if (window.getSelection) {
         let selection = window.getSelection()
         if (selection.getRangeAt && selection.rangeCount) {
@@ -291,17 +354,56 @@ export default {
           this.range = range.cloneRange()
         }
       }
+    },
+
+    // 恢复选区
+    restoreSelection () {
+      if (this.range) {
+        this.resetSelection(this.range)
+      } else {
+        this.setCursorAtEnd()
+      }
+    },
+
+    // 重置选区
+    resetSelection (range) {
+      const selection = window.getSelection()
+      selection.removeAllRanges()
+      selection.addRange(range)
+    },
+
+    // 在end处设置贯标
+    setCursorAtEnd () {
+      const oTextarea = this.$refs.textarea
+      if (oTextarea.lastChild) {
+        const lastChild = oTextarea.lastChild
+        const selection = window.getSelection()
+        const range = document.createRange()
+        range.setStartAfter(lastChild)
+        range.setEndAfter(lastChild)
+        selection.removeAllRanges()
+        selection.addRange(range)
+      } else {
+        oTextarea.focus()
+      }
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
+  button {
+    border: none;
+    outline: none;
+    appearance: none;
+  }
+
   .rich-editor {
     margin: 20px;
     border: 1px solid #dddddd;
     border-radius: 12px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    position: relative;
   }
 
   .menu-list {

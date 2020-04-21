@@ -91,4 +91,3 @@ function dataType (data) {
 console.log(dataType(true));    // 'boolean'
 console.log(dataType(0));       // 'number'
 console.log(dataType(''));      // 'string'
-

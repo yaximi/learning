@@ -1,0 +1,19 @@
+{
+  "name": "lesson-01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:static-page1": "parcel ./static-page1/index.html",
+    "dev:static-page2": "parcel ./static-page2/index.html",
+    "build:static-page1": "parcel build ./static-page1/index.html -d ./static-page1/dist --public-url ./ --no-source-maps",
+    "build:static-page2": "parcel build ./static-page2/index.html -d ./static-page2/dist --public-url ./ --no-source-maps"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^1.12.4"
+  }
+}

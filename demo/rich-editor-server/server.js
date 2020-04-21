@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const express = require('express');
 const server = express();
-const address = 'http://localhost:8888'; // 'http://10.176.168.77:8888'
+const address = 'http://192.168.1.16:8888'; // 'http://10.176.168.77:8888'
 
 server.use(express.static('./www'));
 
