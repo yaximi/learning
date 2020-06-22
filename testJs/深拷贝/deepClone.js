@@ -4,7 +4,7 @@
  * @returns {Array}
  */
 const deepClone = (obj) => {
-    let objClone = Array.isArray(obj) ? [] : {};
+    let newObj = new obj.constructor;
     if (obj && typeof obj === 'object') {
         for (let key in obj) {
             if (obj[key] === obj) {
@@ -12,14 +12,14 @@ const deepClone = (obj) => {
             }
             if (obj.hasOwnProperty(key)) {
                 if (obj[key] && typeof obj[key] === 'object') {
-                    objClone[key] = deepClone(obj[key]);
+                    newObj[key] = deepClone(obj[key]);
                 } else {
-                    objClone[key] = obj[key];
+                    newObj[key] = obj[key];
                 }
             }
         }
     }
-    return objClone;
+    return newObj;
 };
 
 let obj1 = {

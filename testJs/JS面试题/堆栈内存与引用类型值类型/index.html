@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 基本数据类型：boolean number string undefined null symbol(ES6) bigint(ES10)
+    // 引用数据类型：object
+
+    // 堆（heap）栈（stack）内存
+    // 栈内存：提供代码运行的环境，存储基本类型值
+    // 堆内存：存储引用类型值
+
+    // part-1
+    // let a = 0;
+    // let b = a;
+    // b++;
+    // alert(a); // "0"
+
+    // part-2
+    // let a = {};
+    // a.x = 0;
+    // let b = a;
+    // b.x = 1;
+    // console.info(a.x); // 1
+
+    // part-3
+    let a = {
+        n: 0
+    };
+    let b = a;
+    a.x = a = {
+        n: 1
+    };
+    console.info(a.x); // undefined
+    console.info(b); // { n: 0, x: { n: 1 } }
+
+    // 注意：
+    // a.x = a = {}; => a.x = {}; a = {};
+    // let a = b = 0; => let a = 0; b = 0;
+</script>
+</body>
+</html>

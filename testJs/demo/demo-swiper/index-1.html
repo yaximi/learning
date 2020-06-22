@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=dege,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <title>Title</title>
+    <link rel="stylesheet" href="./node_modules/swiper/css/swiper.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            width: 260px;
+            height: 465px;
+            border-radius: 10px;
+            background: pink;
+            transition: 300ms;
+            transform: scale(0.9);
+        }
+
+        .swiper-slide-active,
+        .swiper-slide-duplicate-active {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+    </div>
+</div>
+
+<script src="./node_modules/swiper/js/swiper.min.js"></script>
+<script>
+    window.onload = function () {
+        var mySwiper;
+        function initSwiper () {
+            mySwiper = new Swiper('.swiper-container', {
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                spaceBetween: 10
+            })
+        }
+        initSwiper()
+    }
+</script>
+</body>
+</html>

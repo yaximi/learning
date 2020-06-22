@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /************************************* part1 *************************************/
+
+    // GO(Global Object)全局对象
+    // var globalObject = {
+    //     Boolean () {},
+    //     Number () {},
+    //     String () {},
+    //     Array () {},
+    //     Object () {},
+    //     Function () {},
+    //     Math: {},
+    //     RegExp () {},
+    //     alert () {},
+    //     document: {},
+    //     location: {},
+    //     // ...
+    //
+    //     window: this
+    // }
+
+    // ECStack: Execution Context Stack 执行上下文栈
+    // EC: Execution Context 执行上下文
+    //      VO: Varibale Object 变量对象
+    //      AO: Activation Object 活动对象(函数执行时创建的对象叫做AO，理解为VO的一个分支)
+    // Scope: 作用域，函数定义的时候就赋予的，而不是执行的时候，执行的时候会生成函数执行上下文
+    // Scope Chain: 作用域链
+
+    /************************************* part2 *************************************/
+
+    // let x = 0;
+    // function A (y) {
+    //     let x = 1;
+    //     function B (z) {
+    //         console.log(x + y + z);
+    //     }
+    //     return B;
+    // }
+    // let C = A(2);
+    // C(3); // 6
+
+    // 执行上面代码的过程
+    // 第一步：创建全局执行上下文，将其压入ECStack中
+    // ECStack = [
+    //     // 全局执行上下文
+    //     EC(G) = {
+    //         // 全局变量对象
+    //         VO(G) = {
+    //             ... 包含全局对象原有的属性
+    //             x: 0
+    //             A: function (y) { ... } // A[[scope]] = VO(G) 创建函数时就就确定了其作用域
+    //         }
+    //     }
+    // ]
+    // 第二步：执行函数A(2)，创建函数A的执行上下文，压栈
+    // ECStack = [
+    //     // A的执行上下文
+    //     EC(A): {
+    //         // 初始化链表
+    //         [scope]: VO(G)
+    //         scopeChain: <AO(A), A[[scope]]>
+    //         // 创建函数A的活动对象
+    //         AO(A): {
+    //             arguments: { 0: 2 }
+    //             y: 2
+    //             x: 1
+    //             B: function (z) { ... } // B[[scope]] = AO(A)
+    //             this: window
+    //         }
+    //     },
+    //     // 全局执行上下文
+    //     EC(G): {
+    //         // 全局变量对象
+    //         VO(G): {
+    //             ... 包含全局对象原有的属性
+    //             x: 0
+    //             A: function (y) { ... } // A[[scope]] = VO(G) 创建函数时就就确定了其作用域
+    //         }
+    //     }
+    // ]
+    // 第三步：执行B/C函数C(3)，创建函数B的执行上下文，压栈
+    // ECStack = [
+    //     // B的执行上下文
+    //     EC(B): {
+    //         // 初始化链表
+    //         [scope]: AO(A)
+    //         scopeChain: <AO(B), B[[scope]]>
+    //         // 创建函数B的活动变量
+    //         AO(B): {
+    //             arguments: { 0: 3 }
+    //             z: 3
+    //             this: window
+    //         }
+    //     },
+    //     // A的执行上下文
+    //     EC(A): {
+    //         // 初始化链表
+    //         [scope]: VO(G)
+    //         scopeChain: <AO(A), A[[scope]]>
+    //         // 创建函数A的活动对象
+    //         AO(A): {
+    //             arguments: { 0: 2 }
+    //             y: 2
+    //             x: 1
+    //             B: function (z) { ... } // B[[scope]] = AO(A)
+    //             this: window
+    //         }
+    //     }
+    //     // 全局执行上下文
+    //     EC(G): {
+    //         // 全局变量对象
+    //         VO(G): {
+    //             ... 包含全局对象原有的属性
+    //             x: 0
+    //             A: function (y) { ... } // A[[scope]] = VO(G) 创建函数时就就确定了其作用域
+    //         }
+    //     }
+    // ]
+    // 第四步：出栈
+
+    /************************************* part3 *************************************/
+
+    let a = 0,
+        b = 0;
+    function f () {
+        console.log(a); // 报错
+        console.log(b); // 0
+        let a = b = 1; // 注意：let a = b = 1; => let a = 1; b = 1;
+        console.log(a, b);  // 1 1
+    }
+    f();
+    console.log(a, b);  // 0 1
+
+    /************************************* part4 *************************************/
+
+    let i = 0;
+    let fn = (i) => (n) => { console.log(n + (++i)); };
+    let f = fn(1);
+    f(2); // 4
+    fn(3)(4); // 8
+    f(5); // 8
+    console.log(i); // 0
+
+    /************************************* part5 *************************************/
+</script>
+</body>
+</html>
