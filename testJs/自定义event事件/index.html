@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="./event.js"></script>
+<script>
+    let e = new Event()
+
+    e.on('click', function () {
+        console.info(1)
+    })
+
+    e.on('click', function () {
+        console.info('2')
+    })
+
+    e.once('click', function () {
+        console.info('3')
+    })
+
+    e.trigger('click') // 1 2 3
+
+    e.trigger('click') // 1 2
+
+    e.off('click')
+
+    e.on('click', function () {
+        console.info('4')
+    })
+
+    e.trigger('click') // 4
+</script>
+</body>
+</html>
