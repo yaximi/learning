@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            margin: 100px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+
+<script>
+    /**
+     * pageX/pageY 触点相对于文档左上角的X/Y坐标，注意页面存在滚动条时与clientX/clientY的区别
+     */
+    var oWrapper = document.getElementsByClassName('box')[0]
+    oWrapper.onclick = function (e) {
+        console.info('pageX:', e.pageX)
+        console.info('pageY:', e.pageY)
+    }
+</script>
+</body>
+</html>
