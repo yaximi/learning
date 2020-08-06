@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #container {
+            width: 300px;
+            height: 300px;
+            margin: 50px;
+            padding: 50px;
+            background: red;
+            position: relative;
+        }
+
+        #wrapper {
+            width: 200px;
+            height: 200px;
+            border: 50px solid yellow;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="wrapper"></div>
+</div>
+
+<script>
+    /**
+     * offsetParent 表示元素的最近定位父级元素，所有的父级元素都没有定位，则表示body元素
+     * 注意：
+     *      如果container加了position，则表示container
+     *      如果container不加position，则表示body
+     */
+
+    console.info('wrapper.offsetParent:', wrapper.offsetParent)
+</script>
+</body>
+</html>

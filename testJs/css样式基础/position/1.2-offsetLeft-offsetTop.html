@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #container {
+            width: 300px;
+            height: 300px;
+            margin: 50px;
+            padding: 50px;
+            background: red;
+            /*position: relative;*/
+        }
+
+        #wrapper {
+            width: 200px;
+            height: 200px;
+            border: 50px solid yellow;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="wrapper"></div>
+</div>
+
+<script>
+    /**
+     * offsetLeft/offsetTop 表示元素相对于最近定位父级元素的坐标，若所有的父级元素都没有定位，则相对于整个文档
+     * 注意：
+     *      1、offsetLeft/offsetTop 是定义在DOM对象上的属性，Event对象上未定义
+     *      2、offsetLeft/offsetTop 表示元素相对于最近定位父级元素的坐标，这里：
+     *          如果container加了position，则表示wrapper相对于container的坐标 50/50
+     *          如果container不加position，则表示wrapper相对于文档document的坐标 100/100
+     */
+
+    console.info('wrapper.offsetLeft:', wrapper.offsetLeft)
+    console.info('wrapper.offsetTop:', wrapper.offsetTop)
+</script>
+</body>
+</html>

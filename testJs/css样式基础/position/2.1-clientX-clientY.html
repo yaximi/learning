@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<script>
+    /**
+     * clientX/clientY 触点相对于浏览器窗口可视区域左上角的坐标，可视区域不包括工具栏和滚动条
+     * 注意：clientX/clientY 是定义在Event对象上的属性，DOM对象上未定义
+     */
+
+    document.body.onclick = function (e) {
+        console.info('e.clientX:', e.clientX)
+        console.info('e.clientY:', e.clientY)
+    }
+</script>
+</body>
+</html>
