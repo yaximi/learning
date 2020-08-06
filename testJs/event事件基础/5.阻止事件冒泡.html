@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**
+     * 阻止事件冒泡:
+     * IE: event.cancelBubble = true;
+     * W3C标准: event.stopPropagation();（IE8及以下版本不支持）
+     * 兼容写法如下:
+     */
+    function stop (event) {
+        var e = event || window.event
+        if (e.stopPropagation) {
+            e.stopPropagation()
+        } else {
+            e.cancelBubble = true
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+
+<script>
+    /**
+     * 事件源对象：触发事件的DOM对象
+     * FF: event.target
+     * IE: event.srcElement
+     * Chrome: 都支持
+     * 兼容写法: var target = event.target || event.srcElement
+     */
+    box.onclick = function (event) {
+        var e = event || window.event
+        var target = e.target || e.srcElement
+        console.info('事件源对象:', target)
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+
+<script>
+    /**
+     * IE: 支持window.event
+     * 标准: 事件处理函数传入的event对象
+     * 兼容写法: var e = event || window.event
+     */
+    box.onclick = function (event) {
+        var e = event || window.event
+        console.info(e)
+    }
+</script>
+</body>
+</html>

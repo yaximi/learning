@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+
+<script>
+    /**
+     * 什么是事件委托：通俗的讲就是委托长辈来执行事件
+     * 把事件绑定在事件源对象的祖先元素上，利用事件冒泡原理触发事件
+     * 优点：
+     *  1、提高性能，不需要循环所有元素一个一个绑定事件
+     *  2、灵活，有动态创建插入进来的新元素不需要重新绑定事件
+     */
+    document.body.onclick = function (event) {
+        var e = event || window.event
+        var target = e.target || e.srcElement
+        console.info('事件源对象:', target)
+        console.info('事件绑定对象:', e.currentTarget)
+    }
+</script>
+</body>
+</html>
