@@ -7,7 +7,6 @@
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         html,
@@ -16,7 +15,7 @@
             height: 100%;
         }
 
-        .box {
+        #content {
             width: 100px;
             height: 100px;
             margin: 100px;
@@ -25,16 +24,15 @@
     </style>
 </head>
 <body>
-<div class="box"></div>
+<div id="content"></div>
 
 <script>
     /**
-     * screenX/screenY 触点相对于显示器屏幕左上角的X/Y坐标
+     * screenX/screenY 触点相对于显示器屏幕左上角的坐标
      */
-    var oWrapper = document.getElementsByClassName('box')[0]
-    oWrapper.onclick = function (e) {
-        console.info('screenX:', e.screenX)
-        console.info('screenY:', e.screenY)
+    content.onclick = function (e) {
+        console.info('e.screenX:', e.screenX)
+        console.info('e.screenY:', e.screenY)
     }
 </script>
 </body>

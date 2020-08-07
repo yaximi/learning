@@ -7,7 +7,6 @@
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         html,
@@ -16,7 +15,7 @@
             height: 100%;
         }
 
-        .box {
+        #content {
             width: 100px;
             height: 100px;
             margin: 100px;
@@ -25,16 +24,15 @@
     </style>
 </head>
 <body>
-<div class="box"></div>
+<div id="content"></div>
 
 <script>
     /**
      * x/y 相当于clientX/clientY
      */
-    var oWrapper = document.getElementsByClassName('box')[0]
-    oWrapper.onclick = function (e) {
-        console.info('x:', e.x)
-        console.info('y:', e.y)
+    content.onclick = function (e) {
+        console.info('e.x:', e.x)
+        console.info('e.y:', e.y)
     }
 </script>
 </body>

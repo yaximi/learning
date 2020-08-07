@@ -7,7 +7,6 @@
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         html,
@@ -21,35 +20,35 @@
             height: 300px;
             margin: 50px;
             padding: 50px;
-            background: red;
+            border: 50px solid #000;
             /*position: relative;*/
         }
 
-        #wrapper {
+        #content {
             width: 200px;
             height: 200px;
-            border: 50px solid yellow;
+            border: 50px solid #999;
             background: pink;
         }
     </style>
 </head>
 <body>
 <div id="container">
-    <div id="wrapper"></div>
+    <div id="content"></div>
 </div>
 
 <script>
     /**
-     * offsetLeft/offsetTop 表示元素相对于最近定位父级元素的坐标，若所有的父级元素都没有定位，则相对于整个文档
+     * offsetLeft/offsetTop 表示元素（包括border）相对于最近定位父级元素左上角（不包括border）的坐标，若所有的父级元素都没有定位，则相对于整个文档
      * 注意：
      *      1、offsetLeft/offsetTop 是定义在DOM对象上的属性，Event对象上未定义
      *      2、offsetLeft/offsetTop 表示元素相对于最近定位父级元素的坐标，这里：
-     *          如果container加了position，则表示wrapper相对于container的坐标 50/50
-     *          如果container不加position，则表示wrapper相对于文档document的坐标 100/100
+     *          如果container加了position，则表示content相对于container的坐标 50/50
+     *          如果container不加position，则表示content相对于文档document的坐标 150/150
      */
 
-    console.info('wrapper.offsetLeft:', wrapper.offsetLeft)
-    console.info('wrapper.offsetTop:', wrapper.offsetTop)
+    console.info('content.offsetLeft:', content.offsetLeft)
+    console.info('content.offsetTop:', content.offsetTop)
 </script>
 </body>
 </html>

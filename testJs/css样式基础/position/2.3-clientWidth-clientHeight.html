@@ -24,7 +24,7 @@
             overflow: scroll;
         }
 
-        #wrapper {
+        #content {
             width: 600px;
             height: 600px;
             background: pink;
@@ -33,12 +33,12 @@
 </head>
 <body>
 <div id="container">
-    <div id="wrapper"></div>
+    <div id="content"></div>
 </div>
 
 <script>
     /**
-     * clientWidth/clientHeight 表示元素的尺寸（width + padding - scrollbarWidth）
+     * clientWidth/clientHeight 表示元素可视区域的宽高
      *
      * 标准盒模型
      *      1）box-sizing: content-box;

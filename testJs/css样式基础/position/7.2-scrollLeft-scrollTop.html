@@ -16,20 +16,27 @@
         }
 
         #container {
-            width: 300px;
-            height: 300px;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            padding: 10px;
+            border: 10px solid #000;
             overflow: scroll;
         }
 
-        #wrapper {
-            width: 600px;
-            height: 600px;
+        #content {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            padding: 10px;
+            border: 10px solid #999;
+            overflow: scroll;
         }
     </style>
 </head>
 <body>
 <div id="container">
-    <div id="wrapper"></div>
+    <div id="content"></div>
 </div>
 
 <script>
@@ -37,8 +44,50 @@
      * scrollLeft 表示元素滚动条到元素左边的距离（即水平方向的滚动距离）
      * scrollTop 表示元素滚动条到元素上边的距离（即垂直方向的滚动距离）
      */
+
     document.body.onclick = function () {
+        /**
+         * 标准盒模型下，当滚动到最右边时（即scrollLeft最大时）:
+         *
+         * container.scrollLeft = container.scrollWidth - container.clientWidth =
+         *  content.width (200)
+         *  + content.paddingLeft (10)
+         *  + content.paddingRight (10)
+         *  + content.borderLeft (10)
+         *  + content.borderRight (10)
+         *  + content.marginLeft (10)
+         *  + container.paddingLeft (10)
+         *  - (
+         *      container.width (100)
+         *      + container.paddingLeft (10)
+         *      + container.paddingRight (10)
+         *      - container.scrollbarWidth (17)
+         *  )
+         *  = 157
+         */
         console.info('container.scrollLeft:', container.scrollLeft)
+
+        /**
+         * 标准盒模型下，当滚动到最下边时（即scrollTop最大时）:
+         *
+         * container.scrollTop = container.scrollHeight - container.clientHeight =
+         *  content.height (200)
+         *  + content.paddingTop (10)
+         *  + content.paddingBottom (10)
+         *  + content.borderTop (10)
+         *  + content.borderBottom (10)
+         *  + content.marginTop (10)
+         *  + content.marginBottom (10)
+         *  + container.paddingTop (10)
+         *  + container.paddingBottom (10)
+         *  - (
+         *      container.height (100)
+         *      + container.paddingTop (10)
+         *      + container.paddingBottom (10)
+         *      - container.scrollbarHeight (17)
+         *  )
+         *  = 177
+         */
         console.info('container.scrollTop:', container.scrollTop)
     }
 </script>

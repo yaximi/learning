@@ -16,31 +16,33 @@
         }
 
         #container {
-            width: 300px;
-            height: 300px;
-            margin: 30px;
-            padding: 30px;
-            border: 30px solid red;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            padding: 10px;
+            border: 10px solid #000;
             overflow: scroll;
         }
 
-        #wrapper {
-            width: 10px;
-            height: 10px;
+        #content {
+            width: 200px;
+            height: 200px;
             margin: 10px;
-            padding: 50px;
-            border: 50px solid transparent;
-            background: pink;
+            padding: 10px;
+            border: 10px solid #999;
+            overflow: scroll;
         }
     </style>
 </head>
 <body>
 <div id="container">
-    <div id="wrapper"></div>
+    <div id="content"></div>
 </div>
 
 <script>
     /**
+     * 标准盒模型下:
+     *
      * scrollWidth:
      *  1）内容溢出时，表示内容的width + 内容的左右padding + 内容的左右border + 内容左边的margin + 自身左边的padding
      *  2）内容未溢出时，表示自身的width + 自身的左右padding - 自身垂直滚动条的width，相当于clientWidth
@@ -49,13 +51,54 @@
      *  1）内容溢出时，表示内容的height + 内容的上下padding + 内容的上下border + 内容的上下margin + 自身的上下padding
      *  2）内容未溢出时，表示自身的height + 自身的上下padding - 自身水平滚动条的height，相当于clientHeight
      */
-    document.body.onclick = function () {
-        console.info('container.scrollWidth:', container.scrollWidth)
-        console.info('container.scrollHeight:', container.scrollHeight)
 
-        console.info('wrapper.scrollWidth:', wrapper.scrollWidth)
-        console.info('wrapper.scrollHeight:', wrapper.scrollHeight)
-    }
+    /**
+     * container的内容content宽高溢出
+     *
+     * container.scrollWidth =
+     *  content.width（200）
+     *  + content.paddingLeft（10）
+     *  + content.paddingRight（10）
+     *  + content.borderLeft（10）
+     *  + content.borderRight（10）
+     *  + content.marginLeft（10）
+     *  + container.paddingLeft（10）
+     *  = 260
+     *
+     * container.scrollHeight =
+     *  content.height (200)
+     *  + content.paddingTop (10)
+     *  + content.paddingBottom (10)
+     *  + content.borderTop (10)
+     *  + content.borderBottom (10)
+     *  + content.marginTop (10)
+     *  + content.marginBottom (10)
+     *  + container.paddingTop (10)
+     *  + container.paddingBottom (10)
+     *  = 280
+     */
+    console.info('container.scrollWidth:', container.scrollWidth)
+    console.info('container.scrollHeight:', container.scrollHeight)
+
+    /**
+     * content没有内容，不存在内容溢出，但设置了overflow: scroll; 自身存在滚动条
+     *
+     * content.scrollWidth =
+     *  content.width (200)
+     *  + content.paddingLeft (10)
+     *  + content.paddingRight (10)
+     *  - content.scrollbarWidth (17)
+     *  = 203
+     *
+     * content.scrollHeight =
+     *  content.height (200)
+     *  + content.paddingTop (10)
+     *  + content.paddingBottom (10)
+     *  - content.scrollbarHeight (17)
+     *  = 203
+     */
+    console.info('content.scrollWidth:', content.scrollWidth)
+    console.info('content.scrollHeight:', content.scrollHeight)
 </script>
 </body>
 </html>

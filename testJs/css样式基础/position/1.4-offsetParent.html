@@ -7,7 +7,6 @@
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         html,
@@ -17,25 +16,24 @@
         }
 
         #container {
-            width: 300px;
-            height: 300px;
+            width: 200px;
+            height: 200px;
             margin: 50px;
             padding: 50px;
             background: red;
             position: relative;
         }
 
-        #wrapper {
+        #content {
             width: 200px;
             height: 200px;
-            border: 50px solid yellow;
             background: pink;
         }
     </style>
 </head>
 <body>
 <div id="container">
-    <div id="wrapper"></div>
+    <div id="content"></div>
 </div>
 
 <script>
@@ -46,7 +44,7 @@
      *      如果container不加position，则表示body
      */
 
-    console.info('wrapper.offsetParent:', wrapper.offsetParent)
+    console.info('content.offsetParent:', content.offsetParent)
 </script>
 </body>
 </html>

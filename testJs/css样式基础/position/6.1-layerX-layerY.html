@@ -7,7 +7,6 @@
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         html,
@@ -16,32 +15,30 @@
             height: 100%;
         }
 
-        .container {
-            margin: 50px;
-            padding: 50px;
+        #container {
+            margin: 100px;
+            padding: 100px;
             background: red;
             position: absolute;
         }
 
-        .wrapper {
+        #content {
             width: 100px;
             height: 100px;
-            margin: 50px;
             background: pink;
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="wrapper"></div>
+<div id="container">
+    <div id="content"></div>
 </div>
 
 <script>
     /**
-     * layerX/layerX 相对与设置了定位的最内层的父元素左上角的X/Y坐标，如果父元素都没有设置定位，则表示相对于文档左上角的X/Y坐标（相当于pageX/pageY）
+     * layerX/layerX 触点相对于最近定位父级元素左上角的坐标，若所有的父级元素都没有定位，则相对于整个文档，此时相当于pageX/pageY
      */
-    var oWrapper = document.getElementsByClassName('wrapper')[0]
-    oWrapper.onclick = function (e) {
+    content.onclick = function (e) {
         console.info('layerX:', e.layerX)
         console.info('layerY:', e.layerY)
     }

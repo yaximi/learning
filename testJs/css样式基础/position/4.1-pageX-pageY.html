@@ -7,7 +7,6 @@
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         html,
@@ -16,7 +15,7 @@
             height: 100%;
         }
 
-        .box {
+        #content {
             width: 100px;
             height: 100px;
             margin: 100px;
@@ -25,16 +24,15 @@
     </style>
 </head>
 <body>
-<div class="box"></div>
+<div id="content"></div>
 
 <script>
     /**
-     * pageX/pageY 触点相对于文档左上角的X/Y坐标，注意页面存在滚动条时与clientX/clientY的区别
+     * pageX/pageY 触点相对于文档左上角的坐标，注意页面存在滚动条时与clientX/clientY的区别
      */
-    var oWrapper = document.getElementsByClassName('box')[0]
-    oWrapper.onclick = function (e) {
-        console.info('pageX:', e.pageX)
-        console.info('pageY:', e.pageY)
+    content.onclick = function (e) {
+        console.info('e.pageX:', e.pageX)
+        console.info('e.pageY:', e.pageY)
     }
 </script>
 </body>

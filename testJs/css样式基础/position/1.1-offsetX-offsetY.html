@@ -7,7 +7,6 @@
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         html,
@@ -23,7 +22,7 @@
             background: red;
         }
 
-        #wrapper {
+        #content {
             width: 200px;
             height: 200px;
             border: 50px solid yellow;
@@ -33,7 +32,7 @@
 </head>
 <body>
 <div id="container">
-    <div id="wrapper"></div>
+    <div id="content"></div>
 </div>
 
 <script>
@@ -43,10 +42,10 @@
      *      1、offsetX/offsetY 是定义在Event对象上的属性，DOM对象上未定义
      *      2、offsetX/offsetY 表示触点相对于事件源对象左上角的坐标，无论是谁绑定的事件监听：
      *          这里，虽然事件监听（onclick）是在container上绑定的，但：
-     *          如果点击位置在wrapper内（wrapper为事件源对象），则表示触点相对于wrapper左上角的坐标
+     *          如果点击位置在content内（content为事件源对象），则表示触点相对于content左上角的坐标
      *          如果点击位置在container内（container为事件源对象），则表示触点相对于container左上角的坐标
      *      3、左上角不包括元素的border：
-     *          这里，设置wrapper的border为50px的黄色区域，点击黄色区域获取的坐标存在负值
+     *          这里，设置content的border为50px的黄色区域，点击黄色区域获取的坐标可能存在负值
      *      4、ie6-8，ff2-38不支持，详情可查can i use
      */
 
