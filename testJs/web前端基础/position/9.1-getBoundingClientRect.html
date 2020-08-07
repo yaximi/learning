@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #content {
+            width: 100px;
+            height: 100px;
+            margin: 50px;
+            padding: 50px;
+            border: 50px solid #000;
+        }
+    </style>
+</head>
+<body>
+<div id="content"></div>
+
+<script>
+    /**
+     * DOM.getBoundingClientRect()
+     * 返回一个DOMRect对象：
+     * {
+     *     width,
+     *     height,
+     *     left,
+     *     right,
+     *     top,
+     *     bottom,
+     *     x,
+     *     y
+     * }
+     * 其中left/right/top/bottom/x/y都是相对于显示器左上角的坐标
+     * 注意页面滚动之后的返回值
+     */
+    content.onclick = function () {
+        console.info(content.getBoundingClientRect())
+    }
+</script>
+</body>
+</html>
