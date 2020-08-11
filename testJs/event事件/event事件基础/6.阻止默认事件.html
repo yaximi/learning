@@ -10,7 +10,7 @@
 <script>
     /**
      * 阻止默认事件:
-     * return false; 只有以对象属性的方式注册的事件才生效，如<div onclick="prevent()"></div>
+     * return false; 只有以对象属性的方式注册的事件才生效，如<a href="#" onclick="return false;"></a>
      * IE: event.returnValue = false;
      * W3C标准: event.preventDefault();（IE8及以下版本不支持）
      * 兼容写法如下:
