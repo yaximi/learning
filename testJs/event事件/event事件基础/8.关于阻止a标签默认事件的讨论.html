@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            padding: 200% 0 0;
+        }
+    </style>
+</head>
+<body>
+<a href="">click me</a><br>
+<a href="#">click me</a><br>
+<a href="javascript:;">click me</a><br>
+<a href="javascript: void(0);">click me</a><br>
+<a href="#" onclick="return false;">click me</a>
+
+<script>
+    /**
+     * 1、a标签，href属性为空时，点击a标签会重定向到当前页面（刷新当前页面），在前端性能优化中，要尽量避免重定向
+     * 2、阻止a标签点击跳转（即重定向）的方法：
+     *  （1）、href="#" 这种写法，在页面存在滚动条时，点击会回到页面顶部
+     *  （2）、href="javascript:;"
+     *  （3）、href="javascript: void(0);"
+     *  （4）、href="return false;" 阻止默认事件（e.preventDefault(); or window.event.returnValue = false;）
+     */
+</script>
+</body>
+</html>

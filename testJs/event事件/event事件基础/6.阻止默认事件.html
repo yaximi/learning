@@ -9,19 +9,19 @@
 
 <script>
     /**
-     * 阻止默认事件:
-     * return false; 只有以对象属性的方式注册的事件才生效，如<a href="#" onclick="return false;"></a>
-     * IE: event.returnValue = false;
-     * W3C标准: event.preventDefault();（IE8及以下版本不支持）
-     * 兼容写法如下:
+     * 阻止默认事件：
+     * 1、W3C标准：e.preventDefault();（IE8及以下版本不支持）
+     * 2、IE：window.event.returnValue = false;
+     * 3、return false;（受限于事件监听的写法，某些写法不起作用）
+     * 4、兼容写法：
      */
-    function prevent (event) {
-        var e = event || window.event
-        if (e.preventDefault) {
-            e.preventDefault()
+    function prevent (e) {
+        if (e && e.preventDefault) {
+            e.preventDefault();
         } else {
-            e.returnValue = false
+            window.event.returnValue = false;
         }
+        return false;
     }
 </script>
 </body>
