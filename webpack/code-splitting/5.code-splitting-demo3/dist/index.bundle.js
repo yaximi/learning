@@ -26,12 +26,12 @@ function _getComponent() {
           case 0:
             element = document.createElement('div');
             _context.next = 3;
-            return __webpack_require__.e(/* import() */ 2).then(__webpack_require__.t.bind(__webpack_require__, 5, 7));
+            return __webpack_require__.e(/* import() | lodash */ 1).then(__webpack_require__.t.bind(__webpack_require__, 4, 7));
 
           case 3:
             _yield$import = _context.sent;
             _ = _yield$import["default"];
-            element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+            element.innerHTML = _.join(['Hello', 'webpack!'], ' ');
             return _context.abrupt("return", element);
 
           case 7:
@@ -949,7 +949,7 @@ module.exports = _asyncToGenerator;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "" + chunkId + ".bundle.js";
+/******/ 			return "" + "lodash" + ".bundle.js";
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -973,7 +973,7 @@ module.exports = _asyncToGenerator;
 /******/ 	/* webpack/runtime/load script */
 /******/ 	(() => {
 /******/ 		var inProgress = {};
-/******/ 		var dataWebpackPrefix = "5.dynamic-import:";
+/******/ 		var dataWebpackPrefix = "5.code-splitting-demo3:";
 /******/ 		// loadScript function to load a script via script tag
 /******/ 		__webpack_require__.l = (url, done, key) => {
 /******/ 			if(inProgress[url]) { inProgress[url].push(done); return; }
@@ -1049,7 +1049,7 @@ module.exports = _asyncToGenerator;
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// Promise = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			1: 0
+/******/ 			0: 0
 /******/ 		};
 /******/ 		
 /******/ 		
@@ -1130,7 +1130,7 @@ module.exports = _asyncToGenerator;
 /******/ 		
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunk_5_dynamic_import"] = self["webpackChunk_5_dynamic_import"] || [];
+/******/ 		var chunkLoadingGlobal = self["webpackChunk_5_code_splitting_demo3"] = self["webpackChunk_5_code_splitting_demo3"] || [];
 /******/ 		var parentChunkLoadingFunction = chunkLoadingGlobal.push.bind(chunkLoadingGlobal);
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback;
 /******/ 	})();

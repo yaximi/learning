@@ -1,6 +1,6 @@
-(self["webpackChunk_4_dynamic_import"] = self["webpackChunk_4_dynamic_import"] || []).push([[1],[
-/* 0 */,
-/* 1 */
+(self["webpackChunk_4_dynamic_import"] = self["webpackChunk_4_dynamic_import"] || []).push([[2],{
+
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* module decorator */ module = __webpack_require__.nmd(module);
@@ -17160,4 +17160,5 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 
 /***/ })
-]]);
+
+}]);

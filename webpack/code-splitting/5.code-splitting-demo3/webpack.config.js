@@ -5,11 +5,11 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 module.exports = {
     mode: "none",
     entry: {
-        index: "./src/index.js",
-        another: "./src/another-module.js"
+        index: "./src/index.js"
     },
     output: {
         filename: "[name].bundle.js",
+        chunkFilename: "[name].bundle.js",
         path: path.resolve(__dirname, "dist"),
         publicPath: "./"
     },
@@ -21,8 +21,8 @@ module.exports = {
                     {
                         loader: "babel-loader",
                         options: {
-                            presets: ['@babel/preset-env'],
-                            plugins: ['@babel/plugin-transform-runtime']
+                            presets: ["@babel/preset-env"],
+                            plugins: ["@babel/plugin-transform-runtime"]
                         }
                     }
                 ],
@@ -34,4 +34,4 @@ module.exports = {
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin()
     ]
-};
+}
