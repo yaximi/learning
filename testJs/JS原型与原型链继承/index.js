@@ -1,5 +1,7 @@
 
 /**
+ * https://blog.csdn.net/cc18868876837/article/details/81211729
+ *
  * 1、js的世界里，一切皆对象，函数亦如是（js中函数也是一种对象）
  *
  * 2、__proto__和constructor属性是对象都有的，但prototype属性是函数独有的

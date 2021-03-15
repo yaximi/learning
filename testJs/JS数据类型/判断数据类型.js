@@ -18,6 +18,12 @@
  *  'symbol'
  *
  * 2、不能判断null、array等
+ *
+ * 3、typeof null === 'object'的原因？
+ *  这是一个历史遗留问题（bug）
+ *  1995年的 JavaScript 语言第一版，只设计了五种数据类型（对象、整数、浮点数、字符串和布尔值），没考虑null，只把它当作object的一种特殊值。
+ *  JavaScript 中会把二进制前三位都为0的数值判断为object类型，而作为object特殊值的null，二进制表示全都是0，自然前三位也是0，所以执行typeof时会返回'object'
+ *  后来null独立出来，作为一种单独的数据类型，为了兼容以前的代码，typeof null返回'object'就没法改变了。
  */
 
 console.log(typeof true);       // 'boolean'
