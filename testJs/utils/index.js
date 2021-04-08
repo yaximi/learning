@@ -44,7 +44,7 @@ utils.toggleClass = (e, c, f = false) => {
 utils.getDataType = data => Object.prototype.toString.call(data).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
 
 /**
- * 深拷贝
+ * 深拷贝与浅拷贝
  * @param obj
  * @returns {Array}
  */

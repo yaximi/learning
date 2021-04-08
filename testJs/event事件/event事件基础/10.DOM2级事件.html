@@ -5,6 +5,24 @@
     <title>Title</title>
 </head>
 <body>
-
+<script>
+    /**
+     * DOM2级事件
+     *
+     * 1、添加事件监听
+     *      addEventListener(事件名, 事件处理函数名, bool值);
+     *      可以为元素添加多个事件处理程序，触发时会按照添加顺序依次调用。
+     *
+     * 2、删除事件监听
+     *      removeEventListener(事件名, 事件处理函数名, bool值);
+     *      不能移除匿名添加的函数
+     *
+     * 3、事件的冒泡与捕获
+     *      DOM2级事件包含3个阶段：事件捕获阶段、处于目标阶段和事件冒泡阶段
+     *      例：<span><a></a></span>
+     *      点击a后捕获阶段事件传播会从document-> span->a，然后发生在a，最后冒泡阶段阶段事件传播会从a->span->document。
+     *      可以选择绑定事件时采用事件捕获还是事件冒泡，方法就是绑定事件时通过addEventListener函数，它有三个参数，第三个参数若是true，则表示采用事件捕获，若是false，则表示采用事件冒泡。
+     */
+</script>
 </body>
 </html>

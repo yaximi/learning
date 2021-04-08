@@ -1,5 +1,5 @@
 /**
- * 深拷贝
+ * 深拷贝与浅拷贝
  * @param obj
  * @returns {Array}
  */

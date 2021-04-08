@@ -2988,8 +2988,8 @@ document.body.appendChild(component())
      * @private
      * @param {Array} array The array to fill.
      * @param {*} value The value to fill `array` with.
-     * @param {number} [start=0] The start position.
-     * @param {number} [end=array.length] The end position.
+     * @param {number} [start=0] The start JS如何获取HTML元素的位置信息.
+     * @param {number} [end=array.length] The end JS如何获取HTML元素的位置信息.
      * @returns {Array} Returns `array`.
      */
     function baseFill(array, value, start, end) {
@@ -4030,7 +4030,7 @@ document.body.appendChild(component())
      *
      * @private
      * @param {Function} func The function to apply a rest parameter to.
-     * @param {number} [start=func.length-1] The start position of the rest parameter.
+     * @param {number} [start=func.length-1] The start JS如何获取HTML元素的位置信息 of the rest parameter.
      * @returns {Function} Returns the new function.
      */
     function baseRest(func, start) {
@@ -4147,8 +4147,8 @@ document.body.appendChild(component())
      *
      * @private
      * @param {Array} array The array to slice.
-     * @param {number} [start=0] The start position.
-     * @param {number} [end=array.length] The end position.
+     * @param {number} [start=0] The start JS如何获取HTML元素的位置信息.
+     * @param {number} [end=array.length] The end JS如何获取HTML元素的位置信息.
      * @returns {Array} Returns the slice of `array`.
      */
     function baseSlice(array, start, end) {
@@ -4584,8 +4584,8 @@ document.body.appendChild(component())
      *
      * @private
      * @param {Array} array The array to inspect.
-     * @param {number} start The start position.
-     * @param {number} [end=array.length] The end position.
+     * @param {number} start The start JS如何获取HTML元素的位置信息.
+     * @param {number} [end=array.length] The end JS如何获取HTML元素的位置信息.
      * @returns {Array} Returns the cast slice.
      */
     function castSlice(array, start, end) {
@@ -6648,7 +6648,7 @@ document.body.appendChild(component())
      *
      * @private
      * @param {Function} func The function to apply a rest parameter to.
-     * @param {number} [start=func.length-1] The start position of the rest parameter.
+     * @param {number} [start=func.length-1] The start JS如何获取HTML元素的位置信息 of the rest parameter.
      * @param {Function} transform The rest array transform.
      * @returns {Function} Returns the new function.
      */
@@ -7291,8 +7291,8 @@ document.body.appendChild(component())
      * @category Array
      * @param {Array} array The array to fill.
      * @param {*} value The value to fill `array` with.
-     * @param {number} [start=0] The start position.
-     * @param {number} [end=array.length] The end position.
+     * @param {number} [start=0] The start JS如何获取HTML元素的位置信息.
+     * @param {number} [end=array.length] The end JS如何获取HTML元素的位置信息.
      * @returns {Array} Returns `array`.
      * @example
      *
@@ -8013,8 +8013,8 @@ document.body.appendChild(component())
      * @since 3.0.0
      * @category Array
      * @param {Array} array The array to slice.
-     * @param {number} [start=0] The start position.
-     * @param {number} [end=array.length] The end position.
+     * @param {number} [start=0] The start JS如何获取HTML元素的位置信息.
+     * @param {number} [end=array.length] The end JS如何获取HTML元素的位置信息.
      * @returns {Array} Returns the slice of `array`.
      */
     function slice(array, start, end) {
@@ -10889,7 +10889,7 @@ document.body.appendChild(component())
      * @since 4.0.0
      * @category Function
      * @param {Function} func The function to apply a rest parameter to.
-     * @param {number} [start=func.length-1] The start position of the rest parameter.
+     * @param {number} [start=func.length-1] The start JS如何获取HTML元素的位置信息 of the rest parameter.
      * @returns {Function} Returns the new function.
      * @example
      *
@@ -10922,7 +10922,7 @@ document.body.appendChild(component())
      * @since 3.2.0
      * @category Function
      * @param {Function} func The function to spread arguments over.
-     * @param {number} [start=0] The start position of the spread.
+     * @param {number} [start=0] The start JS如何获取HTML元素的位置信息 of the spread.
      * @returns {Function} Returns the new function.
      * @example
      *
@@ -10993,7 +10993,7 @@ document.body.appendChild(component())
      * @returns {Function} Returns the new throttled function.
      * @example
      *
-     * // Avoid excessively updating the position while scrolling.
+     * // Avoid excessively updating the JS如何获取HTML元素的位置信息 while scrolling.
      * jQuery(window).on('scroll', _.throttle(updatePosition, 100));
      *
      * // Invoke `renewToken` when the click event is fired, but not more than once every 5 minutes.
@@ -14301,7 +14301,7 @@ document.body.appendChild(component())
      * @category String
      * @param {string} [string=''] The string to inspect.
      * @param {string} [target] The string to search for.
-     * @param {number} [position=string.length] The position to search up to.
+     * @param {number} [position=string.length] The JS如何获取HTML元素的位置信息 to search up to.
      * @returns {boolean} Returns `true` if `string` ends with `target`,
      *  else `false`.
      * @example
@@ -14748,7 +14748,7 @@ document.body.appendChild(component())
      * @category String
      * @param {string} [string=''] The string to inspect.
      * @param {string} [target] The string to search for.
-     * @param {number} [position=0] The position to search from.
+     * @param {number} [position=0] The JS如何获取HTML元素的位置信息 to search from.
      * @returns {boolean} Returns `true` if `string` starts with `target`,
      *  else `false`.
      * @example

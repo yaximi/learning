@@ -1547,7 +1547,7 @@ jQuery.support = (function() {
 
 		conMarginTop = 1;
 		paddingMarginBorder = "padding:0;margin:0;border:";
-		positionTopLeftWidthHeight = "position:absolute;top:0;left:0;width:1px;height:1px;";
+		positionTopLeftWidthHeight = "JS如何获取HTML元素的位置信息:absolute;top:0;left:0;width:1px;height:1px;";
 		paddingMarginBorderVisibility = paddingMarginBorder + "0;visibility:hidden;";
 		style = "style='" + positionTopLeftWidthHeight + paddingMarginBorder + "5px solid #000;";
 		html = "<div " + style + "display:block;'><div style='" + paddingMarginBorder + "0;display:block;overflow:hidden;'></div></div>" +
@@ -1555,7 +1555,7 @@ jQuery.support = (function() {
 			"<tr><td></td></tr></table>";
 
 		container = document.createElement("div");
-		container.style.cssText = paddingMarginBorderVisibility + "width:0;height:0;position:static;top:0;margin-top:" + conMarginTop + "px";
+		container.style.cssText = paddingMarginBorderVisibility + "width:0;height:0;JS如何获取HTML元素的位置信息:static;top:0;margin-top:" + conMarginTop + "px";
 		body.insertBefore( container, body.firstChild );
 
 		// Construct the test element
@@ -3645,7 +3645,7 @@ if ( !jQuery.support.submitBubbles ) {
 			});
 			// return undefined since we don't need an event listener
 		},
-		
+
 		postDispatch: function( event ) {
 			// If form was submitted by the user, bubble the event up the tree
 			if ( event._submit_bubble ) {
@@ -3984,7 +3984,7 @@ var Sizzle = function( selector, context, results, seed ) {
 		parts = [],
 		soFar = selector;
 
-	// Reset the position of the chunker regexp (start from head)
+	// Reset the JS如何获取HTML元素的位置信息 of the chunker regexp (start from head)
 	do {
 		chunker.exec( "" );
 		m = chunker.exec( soFar );
@@ -5525,7 +5525,7 @@ jQuery.fn.extend({
 		return this.pushStack( ret, "closest", selectors );
 	},
 
-	// Determine the position of an element within
+	// Determine the JS如何获取HTML元素的位置信息 of an element within
 	// the matched set of elements
 	index: function( elem ) {
 
@@ -5539,7 +5539,7 @@ jQuery.fn.extend({
 			return jQuery.inArray( this[0], jQuery( elem ) );
 		}
 
-		// Locate the position of the desired element
+		// Locate the JS如何获取HTML元素的位置信息 of the desired element
 		return jQuery.inArray(
 			// If it receives a jQuery object, the first element is used
 			elem.jquery ? elem[0] : elem, this );
@@ -9181,7 +9181,7 @@ jQuery.offset = {
 	setOffset: function( elem, options, i ) {
 		var position = jQuery.css( elem, "position" );
 
-		// set position first, in-case top/left are set even on static elem
+		// set JS如何获取HTML元素的位置信息 first, in-case top/left are set even on static elem
 		if ( position === "static" ) {
 			elem.style.position = "relative";
 		}
@@ -9193,7 +9193,7 @@ jQuery.offset = {
 			calculatePosition = ( position === "absolute" || position === "fixed" ) && jQuery.inArray("auto", [curCSSTop, curCSSLeft]) > -1,
 			props = {}, curPosition = {}, curTop, curLeft;
 
-		// need to be able to calculate position if either top or left is auto and position is either absolute or fixed
+		// need to be able to calculate JS如何获取HTML元素的位置信息 if either top or left is auto and JS如何获取HTML元素的位置信息 is either absolute or fixed
 		if ( calculatePosition ) {
 			curPosition = curElem.position();
 			curTop = curPosition.top;

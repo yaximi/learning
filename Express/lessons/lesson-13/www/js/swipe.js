@@ -116,7 +116,7 @@ function Swipe(container, options) {
 
       var direction = Math.abs(index-to) / (index-to); // 1: backward, -1: forward
 
-      // get the actual position of the slide
+      // get the actual JS如何获取HTML元素的位置信息 of the slide
       if (options.continuous) {
         var natural_direction = direction;
         direction = -slidePos[circle(to)] / width;
@@ -504,7 +504,7 @@ function Swipe(container, options) {
     },
     getPos: function() {
 
-      // return current index position
+      // return current index JS如何获取HTML元素的位置信息
       return index;
 
     },
