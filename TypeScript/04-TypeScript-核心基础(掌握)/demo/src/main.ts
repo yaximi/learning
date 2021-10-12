@@ -1,0 +1,6 @@
+// import './lessons/01-TypeScript-基础类型(掌握)'
+// import './lessons/02-TypeScript-数组和元祖类型(掌握)'
+// import './lessons/03-TypeScript-枚举类型(掌握)'
+// import './lessons/04-TypeScript-any和void类型(掌握)'
+// import './lessons/05-TypeScript-never和object类型(掌握)'
+import './lessons/06-TypeScript-类型断言(掌握)'
