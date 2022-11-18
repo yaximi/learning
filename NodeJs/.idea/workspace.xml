@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50016e40-6c93-4555-b2a1-4e50a31d3d78" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../ECMAScript/0.1加0.2不等于0.3的问题/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ECMAScript/0.1加0.2不等于0.3的问题/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -9,8 +10,18 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectConfigurationFiles">
     <option name="files">
@@ -26,41 +37,49 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/code/my-vue-app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ECMAScript" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="Node.js.server.js (3)">
-    <configuration name="1、readFile.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="1、readFile.js" working-dir="$PROJECT_DIR$/lessons/lesson-02">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Personal\github\learning\NodeJs" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Node.js.4.Buffer对象与数值对象之间的相互转换.mjs">
+    <configuration name="01-filehandle-readFile.mjs" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/fs/01-filehandle-readFile.mjs" working-dir="$PROJECT_DIR$/fs">
       <method v="2" />
     </configuration>
-    <configuration name="server.js (1)" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="server.js" working-dir="$PROJECT_DIR$/lessons/lesson-03">
+    <configuration name="1.创建Buffer对象.mjs" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/Buffer/1.创建Buffer对象.mjs" working-dir="$PROJECT_DIR$/Buffer">
       <method v="2" />
     </configuration>
-    <configuration name="server.js (2)" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="server.js" working-dir="$PROJECT_DIR$/lessons/lesson-05">
+    <configuration name="2.字符串的长度与缓存区的长度.mjs" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/Buffer/2.字符串的长度与缓存区的长度.mjs" working-dir="$PROJECT_DIR$/Buffer">
       <method v="2" />
     </configuration>
-    <configuration name="server.js (3)" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="server.js" working-dir="$PROJECT_DIR$/lessons/lesson-06">
+    <configuration name="3.Buffer对象与字符串对象之间的相互转换.mjs" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/Buffer/3.Buffer对象与字符串对象之间的相互转换.mjs" working-dir="$PROJECT_DIR$/Buffer">
       <method v="2" />
     </configuration>
-    <configuration name="server.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="server.js" working-dir="$PROJECT_DIR$/lessons/lesson-01">
+    <configuration name="4.Buffer对象与数值对象之间的相互转换.mjs" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/Buffer/4.Buffer对象与数值对象之间的相互转换.mjs" working-dir="$PROJECT_DIR$/Buffer">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Node.js.server.js (3)" />
-        <item itemvalue="Node.js.server.js (2)" />
-        <item itemvalue="Node.js.server.js (1)" />
-        <item itemvalue="Node.js.1、readFile.js" />
-        <item itemvalue="Node.js.server.js" />
+        <item itemvalue="Node.js.4.Buffer对象与数值对象之间的相互转换.mjs" />
+        <item itemvalue="Node.js.3.Buffer对象与字符串对象之间的相互转换.mjs" />
+        <item itemvalue="Node.js.1.创建Buffer对象.mjs" />
+        <item itemvalue="Node.js.2.字符串的长度与缓存区的长度.mjs" />
+        <item itemvalue="Node.js.01-filehandle-readFile.mjs" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -74,16 +93,27 @@
       <workItem from="1571015147688" duration="3047000" />
       <workItem from="1632360876106" duration="667000" />
       <workItem from="1632877470320" duration="942000" />
+      <workItem from="1649903546352" duration="2178000" />
+      <workItem from="1649987387678" duration="5867000" />
+      <workItem from="1650081723381" duration="7702000" />
+      <workItem from="1650158903065" duration="6059000" />
+      <workItem from="1650247099942" duration="39191000" />
+      <workItem from="1651285479162" duration="614000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1632895222975">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1632895222975" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
