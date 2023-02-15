@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="">
+  <label for="version">版本：</label>
+  <select name="version" id="version" size="5" multiple>
+    <option value="1.0.0">V-1.0.0</option>
+    <option value="1.0.1">V-1.0.1</option>
+    <option value="1.0.2">V-1.0.2</option>
+    <option value="1.0.3">V-1.0.3</option>
+    <option value="1.0.4">V-1.0.4</option>
+    <option value="1.0.5">V-1.0.5</option>
+    <option value="1.0.6">V-1.0.6</option>
+    <option value="1.0.7">V-1.0.7</option>
+    <option value="1.0.8">V-1.0.8</option>
+    <option value="1.0.9">V-1.1.9</option>
+  </select>
+</form>
+
+<script>
+  // label 标签 for 属性指定为 select 标签 的 id 时，点击 label 标签，不会展开或收起 select 选项，仅闪一下
+
+  // <select> 元素用来创建下拉列表。
+  // <select> 元素中的 <option> 标签定义了列表中的可用选项。
+  // <select> 元素是一种表单控件，可用于在表单中接受用户输入。
+
+  // select标签的属性：
+  //    属性：autofocus  值：autofocus   描述：规定在页面加载后文本区域自动获得焦点。
+  //    属性：disabled   值：disabled    描述：规定禁用该下拉列表。
+  //    属性：form       值：form_id     描述：规定文本区域所属的一个或多个表单。
+  //    属性：multiple   值：multiple    描述：规定可选择多个选项。
+  //    属性：name       值：text        描述：规定下拉列表的名称，用于对提交到服务器后的表单数据进行标识，或者在客户端通过 JavaScript 引用表单数据。
+  //    属性：required   值：required    描述：规定文本区域是必填的。
+  //    属性：size       值：number      描述：规定下拉列表中可见选项的数目。
+
+  // option属性：
+  //    属性：disabled   值：disabled    描述：规定此选项应在首次加载时被禁用。
+  //    属性：label      值：text        描述：定义当使用 <optgroup> 时所使用的标注。
+  //    属性：selected   值：selected    描述：规定选项（在首次显示在列表中时）表现为选中状态。
+  //    属性：value      值：text        描述：定义送往服务器的选项值。
+
+  // 注意：
+  //    <select> 标签的 name 属性不显示在页面上，主要用来提交数据
+  //    <option> 标签的 value 属性也不显示在页面上，主要用来定义提交给服务器的值
+  //    <option> 标签的 disabled 属性禁用的是列表中的某一项
+  //    <select> 标签的 disabled 属性禁用的是整个列表
+</script>
+</body>
+</html>

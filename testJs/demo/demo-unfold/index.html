@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多行文本省略展开收起效果</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .wrap {
+            display: flex;
+        }
+
+        .text {
+            width: 300px;
+            /*display: -webkit-box;*/
+            /*-webkit-line-clamp: 3;*/
+            /*-webkit-box-orient: vertical;*/
+            text-align: justify;
+            line-height: 1.5;
+            /*max-height: 4.5em;*/
+            overflow: hidden;
+            position: relative;
+            transition: .3s max-height;
+        }
+
+        .text::before {
+            content: '';
+            float: right;
+            height: calc(100% - 24px);
+        }
+
+        .text::after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: #fff;
+        }
+
+        [line-clamp="1"] {
+            max-height: 1.5em;
+        }
+
+        [line-clamp="2"] {
+            max-height: 3em;
+        }
+
+        [line-clamp="3"] {
+            max-height: 4.5em;
+        }
+
+        .btn {
+            float: right;
+            clear: both;
+            height: 24px;
+            margin-left: 20px;
+            padding: 0 5px;
+            border-radius: 3px;
+            background: #6594ff;
+            color: #ffffff;
+            position: relative;
+        }
+
+        .btn::before{
+            content: '...';
+            position: absolute;
+            left: -10px;
+            color: #333;
+            transform: translateX(-100%)
+        }
+
+        .btn::after {
+            content:'展开'
+        }
+
+        #exp {
+            display: none;
+        }
+
+        #exp:checked+.text {
+            max-height: none;
+        }
+
+        #exp:checked+.text::after{
+            visibility: hidden;
+        }
+
+        #exp:checked+.text .btn::before {
+            visibility: hidden; /* 在展开状态下隐藏省略号 */
+        }
+
+        #exp:checked+.text .btn::after {
+            content:'收起'
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <input type="checkbox" id="exp">
+    <div class="text" line-clamp="3">
+        <label class="btn" for="exp"></label>
+        浮动元素是如何定位的正如我们前面提到的那样，当一个元素浮动之后，它会被移出正常的文档流，然后向左或者向右平移，一直平移直到碰到了所处的容器的边框，或者碰到另外一个浮动的元素。
+    </div>
+</div>
+
+<script>
+    /**
+     * 文章：https://juejin.cn/post/6963904955262435336
+     */
+</script>
+</body>
+</html>
