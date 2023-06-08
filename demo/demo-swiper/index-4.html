@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="css/styles.css"/>-->
+    <link rel="stylesheet" type="text/css" href="css/baraja.css"/>
+    <link rel="stylesheet" type="text/css" href="css/custom.css"/>
+    <link rel="stylesheet" type="text/css" href="css/demo.css"/>
+
+    <script src="js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/modernizr.custom.79639.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+        .baraja-demo h4{
+            border-bottom: none !important;
+            padding: 0px 10px 5px;
+        }
+        .baraja-demo h4 dl dt img{
+            width: 10px;
+        }
+        .baraja-demo h4 dl dd{
+            font-size: 12px;
+            padding-left: 5px;
+        }
+        .baraja-demo p{
+            font-size: 12px;
+            color: #666;
+        }
+        .baraja-demo p span{
+            padding-right: 10px;
+        }
+        .baraja-demo p b{
+            padding-left: 10px;
+        }
+        .baraja-demo {
+            width: 240px;
+            margin: 30px auto;
+            color: #aaa;
+        }
+        ul.baraja-container {
+            width: 100%;
+            height: 330px;
+            margin: 0 auto 30px;
+            position: relative;
+            padding: 0;
+            list-style-type: none;
+        }
+        .baraja-demo {
+            margin: 10px auto;
+        }
+        .baraja-demo li>img {
+            display: block;
+            margin: 0 auto;
+            width: 240px;
+            height: 240px;
+            border-radius: 10px 10px 0 0;
+        }
+    </style>
+</head>
+<body>
+<div class="mui-content cont_cp" style="min-height: 100%;padding-bottom: 20px;">
+    <div class="tab">
+        <a href="#">CP活动</a>
+        <span></span>
+        <a href="#" class="active_tab">互选CP</a>
+        <dl>
+            <dt><img src="images/img4/right_icon.png"/></dt>
+            <dd>筛选</dd>
+        </dl>
+    </div>
+    <div class="baraja-demo">
+        <ul id="baraja-el" class="baraja-container">
+            <div style="position: absolute;bottom: -31px;padding-left:-2px;width: 104.5%;z-index: 2222;;left: 0;"><img style="border-radius: 0px;width: 100%;" src="images/dffed.png"/></div>
+            <li><img src="images/1.jpg" alt="image1"/>
+                <h4>李一萌
+                    <dl class="rt">
+                        <dt class="lt"><img src="images/img4/xuelou.png"/></dt>
+                        <dd class="lt">清华大学</dd>
+                    </dl>
+                </h4>
+                <p><span>女</span><s>22</s>岁<b>狮子座</b></p>
+            </li>
+            <li><img src="images/2.jpg" alt="image1"/>
+                <h4>李一萌
+                    <dl class="rt">
+                        <dt class="lt"><img src="images/img4/xuelou.png"/></dt>
+                        <dd class="lt">清华大学</dd>
+                    </dl>
+                </h4>
+                <p><span>女</span><s>22</s>岁<b>狮子座</b></p>
+            </li>
+            <li><img src="images/3.jpg" alt="image1"/>
+                <h4>李一萌
+                    <dl class="rt">
+                        <dt class="lt"><img src="images/img4/xuelou.png"/></dt>
+                        <dd class="lt">清华大学</dd>
+                    </dl>
+                </h4>
+                <p><span>女</span><s>22</s>岁<b>狮子座</b></p>
+            </li>
+            <li><img src="images/4.jpg" alt="image1"/>
+                <h4>李一萌
+                    <dl class="rt">
+                        <dt class="lt"><img src="images/img4/xuelou.png"/></dt>
+                        <dd class="lt">清华大学</dd>
+                    </dl>
+                </h4>
+                <p><span>女</span><s>22</s>岁<b>狮子座</b></p>
+            </li>
+            <li><img src="images/5.jpg" alt="image1"/>
+                <h4>李一萌
+                    <dl class="rt">
+                        <dt class="lt"><img src="images/img4/xuelou.png"/></dt>
+                        <dd class="lt">清华大学</dd>
+                    </dl>
+                </h4>
+                <p><span>女</span><s>22</s>岁<b>狮子座</b></p>
+            </li>
+            <li><img src="images/6.jpg" alt="image1"/>
+                <h4>李一萌
+                    <dl class="rt">
+                        <dt class="lt"><img src="images/img4/xuelou.png"/></dt>
+                        <dd class="lt">清华大学</dd>
+                    </dl>
+                </h4>
+                <p><span>女</span><s>22</s>岁<b>狮子座</b></p>
+            </li>
+            <li><img src="images/7.jpg" alt="image1"/>
+                <h4>李一萌
+                    <dl class="rt">
+                        <dt class="lt"><img src="images/img4/xuelou.png"/></dt>
+                        <dd class="lt">清华大学</dd>
+                    </dl>
+                </h4>
+                <p><span>女</span><s>22</s>岁<b>狮子座</b></p>
+            </li>
+        </ul>
+    </div>
+    <p>提示： 左右滑动翻CP卡片，左滑下一张，右滑上一张</p>
+    <a href="#" class="Cp_btn Cp_btn_active">组CP</a>
+    <div class="foot_menu">
+        <dl class="menu_active2">
+            <a href="#">
+                <dt>
+                    <img class="a" src="images/img4/Bottom_menu4_active.png"/>
+                    <img class="b" src="images/img4/Bottom_menu4.png"/>
+                </dt>
+                <dd>CP</dd>
+            </a>
+        </dl>
+        <dl>
+            <a href="#">
+                <dt>
+                    <img class="a" src="images/img4/Bottom_menu3_active.png"/>
+                    <img class="b" src="images/img4/Bottom_menu3.png"/>
+                </dt>
+                <dd>消息</dd>
+            </a>
+        </dl>
+        <dl>
+            <a href="#">
+                <dt>
+                    <img class="a" src="images/img4/Bottom_menu2_active.png"/>
+                    <img class="b" src="images/img4/Bottom_menu2.png"/>
+                </dt>
+                <dd>学院</dd>
+            </a>
+        </dl>
+        <dl>
+            <a href="#">
+                <dt>
+                    <img class="a" src="images/img4/Bottom_menu1_active.png"/>
+                    <img class="b" src="images/img4/Bottom_menu_1.png"/>
+                </dt>
+                <dd>我的</dd>
+            </a>
+        </dl>
+    </div>
+</div>
+<!--弹框-->
+<div class="zhezhaocheng" style="display: none;"></div>
+<div style="display: none;" class="ws_box">
+    <h3>完善信息</h3>
+    <p>亲爱的，你需要完善信息哦亲爱的，你需要完善信息哦</p>
+    <dl>
+        <dt><a href="#">取消</a></dt>
+        <dd><a href="#">确定</a></dd>
+    </dl>
+</div>
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery.baraja.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+    $(function() {
+        var $el = $( '#baraja-el' ),
+            baraja = $el.baraja();
+
+// navigation
+        $( '#baraja-el li' ).on( 'touchmove', function( event ) {
+            var startx, starty;
+//获得角度
+            function getAngle(angx, angy) {
+                return Math.atan2(angy, angx) * 180 / Math.PI;
+            };
+
+//根据起点终点返回方向 1向上 2向下 3向左 4向右 0未滑动
+            function getDirection(startx, starty, endx, endy) {
+                var angx = endx - startx;
+                var angy = endy - starty;
+                var result = 0;
+
+//如果滑动距离太短
+                if (Math.abs(angx) < 2 && Math.abs(angy) < 2) {
+                    return result;
+                }
+
+                var angle = getAngle(angx, angy);
+                if (angle >= -135 && angle <= -45) {
+                    result = 1;
+                } else if (angle > 45 && angle < 135) {
+                    result = 2;
+                } else if ((angle >= 135 && angle <= 180) || (angle >= -180 && angle < -135)) {
+                    result = 3;
+                } else if (angle >= -45 && angle <= 45) {
+                    result = 4;
+                }
+
+                return result;
+            }
+//手指接触屏幕
+            document.addEventListener("touchstart", function(e) {
+                startx = e.touches[0].pageX;
+                starty = e.touches[0].pageY;
+            }, false);
+//手指离开屏幕
+            document.addEventListener("touchend", function(e) {
+                var endx, endy;
+                endx = e.changedTouches[0].pageX;
+                endy = e.changedTouches[0].pageY;
+                var direction = getDirection(startx, starty, endx, endy);
+                switch (direction) {
+                    case 0:
+//alert("未滑动！");
+                        break;
+                    case 1:
+//alert("向上！")
+                        break;
+                    case 2:
+//alert("向下！")
+                        break;
+                    case 3:
+                        baraja.previous();
+                        $(this).css("margin-bottom","-100px");
+                        break;
+                    case 4:
+                        baraja.next();
+
+                        break;
+                    default:
+                }
+            }, false);
+
+        } );
+
+    });
+
+
+
+</script>
+</body>
+</html>

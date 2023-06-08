@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>根据标签获取元素</title>
+</head>
+<body>
+    <ul id="ul">
+        <li>苹果</li>
+        <li>香蕉</li>
+        <li>橘子</li>
+        <li>榴莲</li>
+        <li>西瓜</li>
+    </ul>
+
+    <script>
+        // 1、使用getElementsByTagName()方法可以获取拥有指定标签名的对象的集合。
+        // 2、get 获取 elements 多个元素 by 通过 tag name 标签名，驼峰命名法。
+        // 3、getElementsByTagName()方法可以通过document对象调用，也可以通过element对象调用。
+        // 4、参数：标签名。
+        // 5、返回值：元素对象的集合（动态的），伪数组，没有返回空数组（伪数组）。
+
+        // document.getElementsByTagName()
+        const fruits = document.getElementsByTagName('li');
+        console.log(fruits);
+
+        // element.getElementsByTagName()
+        const lis = document.getElementById('ul').getElementsByTagName('li');
+        console.log(lis);
+    </script>
+</body>
+</html>

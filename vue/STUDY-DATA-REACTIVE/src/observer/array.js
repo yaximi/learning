@@ -22,7 +22,7 @@ methodsToPatch.forEach(method => {
         // 2、这里的this指向调用该方法的数组
 
         // 执行原始方法
-        const result = original.apply(this, args)
+        const result = original.apply(this, args);
         const ob = this.__ob__;
 
         // 对新插入数组的值进行相应化处理

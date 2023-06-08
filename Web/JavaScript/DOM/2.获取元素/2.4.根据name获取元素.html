@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>根据name获取元素</title>
+</head>
+<body>
+    <p>请选择你最喜欢的水果(多选)</p>
+    <label><input type="checkbox" name="fruit" value="苹果">苹果</label>
+    <label><input type="checkbox" name="fruit" value="香蕉">香蕉</label>
+    <label><input type="checkbox" name="fruit" value="西瓜">西瓜</label>
+
+    <script>
+        // 1、通过name属性来获取元素应使用document.getElementsByName()方法，一般用于获取表单元素。
+        // 2、name属性的值不要求必须是唯一的，多个元素也可以有同样的名字，如表单中的单选框和复选框。
+        // 3、getElementsByName()方法返回的是一个对象集合（非数组），可以使用索引获取元素。
+        const fruits = document.getElementsByName("fruit");
+        fruits[0].checked = true;
+        console.log(fruits);
+        console.log(typeof fruits);
+        console.dir(fruits);
+    </script>
+</body>
+</html>

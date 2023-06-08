@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>根据id获取元素</title>
+</head>
+<body>
+    <div id="box">box</div>
+
+    <div id="box2">box2 1</div>
+    <div id="box2">box2 2</div>
+    <div id="box2">box2 3</div>
+
+    <script>
+        // 1、因为我们的文档页面是从上往下加载的，所以得先有标签，所以script要写在标签的下面。
+        // 2、get 获得 element 元素 by 通过 id 方式，驼峰命名法。
+        // 3、getElementById()是document对象上的方法，只能通过document.getElementById()方式调用。
+        // 4、参数：id是大小写敏感的字符串，注意：不带#。
+        // 5、返回值：元素对象，没有返回null，有多个返回第一个。
+        const oBox = document.getElementById('box');
+        console.log(oBox);
+        console.log(typeof oBox);
+        console.dir(oBox);
+
+        // 没有返回null
+        const oBox1 = document.getElementById('box1');
+        console.log(oBox1);
+
+        // 有多个返回第一个
+        const oBox2 = document.getElementById('box2');
+        console.log(oBox2);
+        console.dir(oBox2);
+    </script>
+</body>
+</html>
