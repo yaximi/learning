@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05_兄弟选择器</title>
+    <style>
+        /* 相邻兄弟选择器（睡在我下铺的兄弟，注意：下面） */
+        div + p {
+            color: red;
+        }
+
+        div + p + p {
+            color: green;
+        }
+
+        /* 通用兄弟选择器（睡在我下铺的所有兄弟，注意：下面和所有） */
+        div ~ p {
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <p>王五</p>
+    <div>姓名：</div>
+    <p>张三</p>
+    <p>李四</p>
+</body>
+</html>

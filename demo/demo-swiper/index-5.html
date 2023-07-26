@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>弧形轮播图</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        #main {
+
+            width: 1000px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            height: 400px;
+
+            margin: 20px auto;
+
+            background-color: #272822;
+
+            -webkit-perspective: 500px;
+
+            perspective: 500px;
+
+        }
+
+        #disqus_thread {
+
+            max-width: 1000px;
+
+            margin: 0 auto;
+
+        }
+
+        #main img {
+
+            box-shadow: 0 0 7px #eee;
+
+            position: absolute;
+
+            width: 200px;
+
+            height: 140px;
+
+            background: #fff;
+
+            -webkit-transition: transform ease-out .5s;
+
+            transition: transform ease-out .5s;
+
+            left: 50%;
+
+            margin-left: -120px;
+
+            top: 100px;
+
+            z-index: -100;
+
+            border: 2px solid transparent;
+
+            display: none;
+
+        }
+
+        #main img[class^=current] {
+
+            display: block;
+
+            z-index: 1;
+
+            cursor: pointer;
+
+            transform-style: preserve-3d;
+
+        }
+
+        #main img.current, #main img:hover {
+
+            border: 2px solid #06f;
+
+            transform: translate3d(0, 2px, 0) rotateY(0deg) scale(.6);
+
+        }
+
+        #main img.current-1 {
+
+            transform: translate3d(-130px, 0, 0) rotateY(20deg) scale(.62);
+
+        }
+
+        #main img.current-2 {
+
+            transform: translate3d(-284px, -4px, 0) rotateY(30deg) scale(.71);
+
+        }
+
+        #main img.current-3 {
+
+            transform: translate3d(-490px, -10px, 0) rotateY(40deg) scale(.86);
+
+        }
+
+        #main img.current-4 {
+
+            transform: translate3d(-700px, 0, 0) rotateY(30deg) scale(.7);
+
+        }
+
+        #main img.current-a {
+
+            transform: translate3d(130px, 0, 0) rotateY(-20deg) scale(.62);
+
+        }
+
+        #main img.current-b {
+
+            transform: translate3d(280px, -4px, 0) rotateY(-30deg) scale(.71);
+
+        }
+
+        #main img.current-c {
+
+            transform: translate3d(480px, -10px, 0) rotateY(-40deg) scale(.86);
+
+        }
+
+        #main img.current-d {
+
+            transform: translate3d(800px, -16px, 0) rotateY(-50deg) scale(.99);
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div id="main">
+
+    <img src="http://img.itc.cn/photo/jZh1VV2Y3I1" class="current">
+
+    <img src="http://img.itc.cn/photo/jZh1VV2Y3I1" class="current-a">
+
+    <img src="http://img.itc.cn/photo/jZh1VV2Y3I1" class="current-b">
+
+    <img src="http://img.itc.cn/photo/jZh1VV2Y3I1" class="current-c">
+
+    <img src="http://img.itc.cn/photo/jZh1VV2Y3I1" class="current-d">
+
+    <img src="http://img.itc.cn/photo/jZh1VV2Y3I1" class="">
+
+    <img src="http://img.itc.cn/photo/jZh1VV2Y3I1" class="">
+
+    <img src="http://img.itc.cn/photo/jZh1VV2Y3I1" class="">
+
+    <img src="http://img.itc.cn/photo/jZh1VV2Y3I1" class="">
+
+    <img src="http://img.itc.cn/photo/jZh1VV2Y3I1" class="current-4">
+
+    <img src="http://img.itc.cn/photo/jZh1VV2Y3I1" class="current-3">
+
+    <img src="http://img.itc.cn/photo/jZh1VV2Y3I1" class="current-2">
+
+    <img src="http://img.itc.cn/photo/jZh1VV2Y3I1" class="current-1">
+
+</div>
+
+<script>
+
+    (function ($) {
+
+        var main = $("main"),
+
+            list = main.children,
+
+            length = list.length,
+
+            _index = 0;
+
+        var turn = function (index) {
+
+            _index = index % length;
+
+            for (var i = 0; i < length; i++) {
+
+                switch (i) {
+
+                    case index:
+
+                        list[i].className = "current";
+
+                        break;
+
+                    case index - 1:
+
+                    case index - 2:
+
+                    case index - 3:
+
+                    case index - 4:
+
+                    case index + length - 1:
+
+                    case index + length - 2:
+
+                    case index + length - 3:
+
+                    case index + length - 4:
+
+                        list[i].className = "current-" + (length + index - i) % length;
+
+                        break;
+
+                    case index + 1:
+
+                    case index - length + 1:
+
+                        list[i].className = "current-a";
+
+                        break;
+
+                    case index + 2:
+
+                    case index - length + 2:
+
+                        list[i].className = "current-b";
+
+                        break;
+
+                    case index + 3:
+
+                    case index - length + 3:
+
+                        list[i].className = "current-c";
+
+                        break;
+
+                    case index + 4:
+
+                    case index - length + 4:
+
+                        list[i].className = "current-d";
+
+                        break;
+
+                    default:
+
+                        list[i].className = "";
+
+                }
+
+            }
+            ;
+
+        };
+
+        var rate = 1,
+
+            index = 0,
+
+            interval = setInterval(function () {
+
+                if (!rate) {
+
+                    return;
+
+                }
+
+                index = (index + rate) % length;
+
+                turn(index);
+
+            }, 2000);
+
+        main.onmouseover = function () {
+
+            rate = 0;
+
+        };
+
+        main.onmouseout = function () {
+
+            rate = 1;
+
+        };
+
+        main.onclick = function (e) {
+
+            if (e) {
+
+                var tar = e.target;
+
+                if ("img" === tar.tagName.toLowerCase()) {
+
+                    index = [].slice.call(list).indexOf(tar);
+
+                    turn(index);
+
+                }
+
+            }
+
+        };
+
+    })(function (id) {
+
+        return document.getElementById(id);
+
+    });
+
+</script>
+
+</body>
+
+</html>

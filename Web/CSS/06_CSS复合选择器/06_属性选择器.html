@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06_属性选择器</title>
+    <style>
+        /**
+         * CSS2定义了4个属性选择器，如下：
+         * 1、E[foo]: 选择匹配E的元素，且该元素定义了foo属性。E选择符可以省略，表示选择定义了foo属性的任意类型的元素，下面几个用法相同。
+         * 2、E[foo="bar"]: 选择匹配E的元素，且该元素定义了foo属性值为bar
+         * 3、E[foo~="bar"]: 选择匹配E的元素，且该元素定义了foo属性，foo属性值是一个以空格符分隔的列表，其中一个列表值为bar。
+         *   例如: a[title~="bar1"]匹配<a title="bar1"></a>和<a title="bar1 bar2"></a>，不匹配<a title="bar2 bar3"></a>
+         * 4、E[foo|="bar"]: 选择匹配E的元素，且该元素定义了foo属性，foo属性值是一个以连字符（-）分隔的列表，值开头的字符为bar。
+         *   例如: [lang|="en"]匹配<body lang="en-us"></body>，不匹配<body lang="fr-argot"></body>
+         *
+         * CSS3新增了3个属性选择器，如下
+         * 1、E[foo^="bar"]: 选择匹配E的元素，且该元素定义了foo属性，foo属性值包含前缀为bar的子字符串
+         * 2、E[foo$="bar"]: 选择匹配E的元素，且该元素定义了foo属性，foo属性值包含后缀为bar的子字符串
+         * 3、E[foo*="bar"]: 选择匹配E的元素，且该元素定义了foo属性，foo属性值包含bar的子字符串
+         */
+    </style>
+</head>
+<body>
+
+</body>
+</html>
