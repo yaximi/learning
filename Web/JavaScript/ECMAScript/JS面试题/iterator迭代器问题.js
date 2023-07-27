@@ -1,4 +1,4 @@
-// 是下面的代码成立
+// 使下面的代码成立
 // const [a, b] = { a: 1, b: 2 };
 
 Object.prototype[Symbol.iterator] = function () {
