@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .prompt {
+            width: 30px;
+            height: 30px;
+            position: relative;
+        }
+
+        .prompt .icon {
+            width: 30px;
+        }
+
+        .prompt .tip {
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translate(100%, -50%);
+            padding: 5px 10px;
+            border-radius: 5px;
+            background: #ffffff;
+            white-space: nowrap;
+            filter: drop-shadow(0 0 5px #999999);
+        }
+
+        .prompt .tip::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            background: #ffffff;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="prompt">
+        <img class="icon" src="./icon-prompt.png" alt="">
+        <div class="tip">我是个提示泡</div>
+    </div>
+</body>
+</html>
