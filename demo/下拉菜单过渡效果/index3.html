@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉菜单过渡效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .selector {
+            width: 300px;
+            margin: 100px auto;
+        }
+
+        .text {
+            width: 100%;
+        }
+
+        .select {
+            margin-top: -2px;
+            border: 1px solid #767676;
+            overflow: hidden;
+            height: 0;
+            /*transition: 1s;*/
+        }
+
+        .option {
+            padding: 0 20px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 20px;
+            color: #333333;
+        }
+
+        /*.selector .text:focus ~ .select {*/
+        /*    !*height: auto;*! !*高度设置成auto，不是具体的值，不会有缓动效果*!*/
+        /*    height: 150px; !*有缓动效果，但高度必须固定*!*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div class="selector">
+    <input type="text" class="text" />
+    <div class="select">
+        <div class="option">苹果</div>
+        <div class="option">香蕉</div>
+        <div class="option">橘子</div>
+        <div class="option">葡萄</div>
+        <div class="option">西瓜</div>
+    </div>
+</div>
+
+<script>
+    const oInput = document.querySelector('.text');
+    const oSelect = document.querySelector('.select');
+
+    oInput.onfocus = function () {
+        oSelect.style.transition = 'none';
+        oSelect.style.height = 'auto';
+        const height = oSelect.offsetHeight;
+        console.log(height);
+        oSelect.style.height = '0px';
+        oSelect.offsetHeight; // 强制回流重新渲染
+        oSelect.style.transition = '1s';
+        oSelect.style.height = height + 'px';
+    }
+
+    oInput.onblur = function () {
+        oSelect.style.transition = '1s';
+        oSelect.style.height = '0px';
+    }
+</script>
+</body>
+</html>
