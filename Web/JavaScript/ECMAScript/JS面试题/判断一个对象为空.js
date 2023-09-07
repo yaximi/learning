@@ -1,8 +1,13 @@
 /**
+ * Symbol 值作为属性名，遍历对象的时候，该属性不会出现在 for...in、for...of 循环中
+ * 也不会被 Object.keys()、Object.getOwnPropertyNames()、JSON.stringify() 方法返回
+ * 但是，它不是私有属性，有一个 Object.getOwnPropertySymbols() 方法，可以获取指定对象的所有 Symbol 属性名。
+ */
+
+/**
  * JSON.stringify()
- *
- * @param obj
- * @returns {boolean}
+ * 1、属性值为 undefined、function、Symbol 值时，存在问题
+ * 2、属性名为 Symbol 值时，也存在问题
  */
 function isEmpty1(obj) {
     return JSON.stringify(obj) === '{}';
@@ -33,9 +38,6 @@ function isEmpty1(obj) {
  * 1、自身的（不含继承）
  * 2、可枚举的（enumerable）
  * 3、不包含symbol
- *
- * @param obj
- * @returns {boolean}
  */
 function isEmpty2(obj) {
     return Object.keys(obj).length === 0;

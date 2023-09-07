@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+<div class="wrapper">
+    <div id='root' style='line-height: 14px;font-size: 12px;'></div>
+</div>
+
+<script src="./utils.js"></script>
+<script>
+    /**
+     * js 实现展开收起效果
+     * 文章：https://zhuanlan.zhihu.com/p/445355066?utm_id=0
+     */
+
+    var fold = true;
+    var unfoldText = '展开';
+    var foldText = '收起';
+    var ellipsisStr = '...';
+    var root = document.getElementById('root');
+    var text = 'css实现最多展示三行，展示不开用省略号表示，省略号和展开按钮有渐变背景色盖住底下文案。css实现最多展示三行，展示不开用省略号表示，省略号和展开按钮有渐变背景色盖住底下文案。css实现最多展示三行，展示不开用省略号表示，省略号和展开按钮有渐变背景色盖住底下文案。';
+    var result = window.measure(root, 3, text, unfoldText, ellipsisStr);
+    renderRealContext(result);
+
+    function renderRealContext(result) {
+        const {content, ellipsis} = result;
+        if (ellipsis) {
+            if (fold) {
+                root.innerHTML = `${content}${ellipsisStr}<span id='fold' style="color: #3498f7;">${unfoldText}</span>`;
+            } else {
+                root.innerHTML = `${text}<span id='fold' style="color: #3498f7;">${foldText}</span>`;
+            }
+            document.getElementById('fold').addEventListener('click', () => {
+                window.fold = !window.fold;
+                renderRealContext(result);
+            })
+        } else {
+            root.innerHTML = text;
+        }
+    }
+</script>
+</body>
+</html>
