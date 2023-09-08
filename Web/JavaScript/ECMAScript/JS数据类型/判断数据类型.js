@@ -8,7 +8,7 @@
 /**
  * 方法一：typeof
  *
- * 1、返回一个表示数据类型的字符串，返回结果包括以下7种数据类型：
+ * 1、返回一个表示数据类型的字符串，返回结果包括以下8种数据类型：
  *  'boolean'
  *  'number'
  *  'string'
@@ -16,6 +16,7 @@
  *  'object'
  *  'function'
  *  'symbol'
+ *  'bigint'
  *
  * 2、不能判断null、array等
  *
@@ -35,11 +36,14 @@ console.log(typeof []);         // 'object'
 console.log(typeof {});         // 'object'
 console.log(typeof (() => {})); // 'function'
 console.log(typeof Symbol());   // 'symbol'
+console.log(typeof 42n);        // 'bigint'
 
 console.log(typeof NaN);            // 'number'
+console.log(typeof Infinity);       // 'number'
 
 console.log(typeof new Date());     // 'object'
 console.log(typeof new RegExp());   // 'object'
+console.log(typeof new Error());    // 'object'
 
 /**********************************************************************************************************************/
 
@@ -69,6 +73,10 @@ console.log((() => {}) instanceof Function);    // true
 console.log(new Date() instanceof Date);        // true
 console.log(new RegExp() instanceof RegExp);    // true
 
+console.log(new Boolean(true) instanceof Boolean);  // true
+console.log(new Number(0) instanceof Number);       // true
+console.log(new String('') instanceof String);      // true
+
 console.log(true instanceof Boolean);   // false
 console.log(0 instanceof Number);       // false
 console.log('' instanceof String);      // false
@@ -94,6 +102,7 @@ console.log(Object.prototype.toString.call(new Date()));       // [object Date]
 console.log(Object.prototype.toString.call(new RegExp()));     // [object RegExp]
 console.log(Object.prototype.toString.call(new Error()));      // [object Error]
 console.log(Object.prototype.toString.call(Symbol()));         // [object Symbol]
+console.log(Object.prototype.toString.call(42n));       // [object BigInt]
 
 /**********************************************************************************************************************/
 

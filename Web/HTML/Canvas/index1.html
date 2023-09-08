@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas API</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        canvas {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: #222;
+        }
+    </style>
+</head>
+<body>
+<canvas></canvas>
+
+<script>
+    /**
+     * Canvas API | MDN
+     * https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API
+     */
+
+    const canvas = document.querySelector('canvas');
+    const ctx = canvas.getContext('2d');
+
+    function init() {
+        canvas.width = window.innerWidth * devicePixelRatio;
+        canvas.height = window.innerHeight * devicePixelRatio;
+    }
+    init();
+
+    /**
+     * 获取 [min, max] 范围内的随机数
+     * @param min
+     * @param max
+     * @returns {number}
+     */
+    function getRandom(min, max) {
+        return Math.floor(Math.random() * (max + 1 - min) + min);
+    }
+
+    class Point {
+        constructor() {
+            this.r = 6;
+            this.x = getRandom(this.r, canvas.width - this.r);
+            this.y = getRandom(this.r, canvas.height - this.r);
+            this.xSpeed = getRandom(-50, 50);
+            this.ySpeed = getRandom(-50, 50);
+            this.lastDrawTime = null;
+        }
+
+        draw() {
+            if (this.lastDrawTime) {
+                const duration = (Date.now() - this.lastDrawTime) / 1000;
+                const xDis = this.xSpeed * duration;
+                const yDis = this.ySpeed * duration;
+                let x = this.x + xDis;
+                let y = this.y + yDis;
+                if (x > canvas.width - this.r) {
+                    x = canvas.width - this.r;
+                    this.xSpeed = -this.xSpeed;
+                } else if (x < this.r) {
+                    x = this.r;
+                    this.xSpeed = -this.xSpeed;
+                }
+                if (y > canvas.height - this.r) {
+                    y = canvas.height - this.r;
+                    this.ySpeed = -this.ySpeed;
+                } else if (y < this.r) {
+                    y = this.r;
+                    this.ySpeed = -this.ySpeed;
+                }
+                this.x = x;
+                this.y = y;
+            }
+
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+            ctx.closePath();
+            ctx.fillStyle = 'rgba(200, 200, 200, 1)';
+            ctx.fill();
+
+            this.lastDrawTime = Date.now();
+        }
+    }
+
+    class Graph {
+        constructor(pointNumber = 30, maxDis = 200) {
+            this.points = new Array(pointNumber).fill(0).map(() => new Point());
+            this.maxDis = maxDis;
+        }
+
+        draw() {
+            requestAnimationFrame(() => {
+                this.draw();
+            });
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < this.points.length; i++) {
+                const p1 = this.points[i];
+                p1.draw();
+
+                for (let j = i + 1; j < this.points.length; j++) {
+                    const p2 = this.points[j];
+                    const d = Math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2);
+                    if (d > this.maxDis) {
+                        continue;
+                    }
+                    ctx.beginPath();
+                    ctx.moveTo(p1.x, p1.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.closePath();
+                    ctx.strokeStyle = `rgba(200, 200, 200, ${1 - d / this.maxDis})`;
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    const g = new Graph();
+    g.draw();
+</script>
+</body>
+</html>
