@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表拖拽排序</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --clr: #222327;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            background: var(--clr);
+        }
+
+        .list {
+
+        }
+
+        .item {
+            margin: 20px 0;
+            width: 400px;
+            height: 70px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .item.moving {
+            background-color: transparent;
+            color: transparent;
+            border: 1px dashed #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="list">
+        <div class="item" draggable="true" data-index="1">1</div>
+        <div class="item" draggable="true" data-index="2">2</div>
+        <div class="item" draggable="true" data-index="3">3</div>
+        <div class="item" draggable="true" data-index="4">4</div>
+        <div class="item" draggable="true" data-index="5">5</div>
+        <div class="item" draggable="true" data-index="6">6</div>
+    </div>
+
+    <script src="./Flip.js"></script>
+    <script>
+        /**
+         * draggable = "true"
+         *
+         * 源对象
+         * ondragstart
+         * ondrag
+         * ondragend
+         *
+         * 目标对象
+         * ondragenter
+         * ondragover
+         * ondragleave
+         * ondrop
+         *
+         * @type {Element}
+         */
+        const list = document.querySelector('.list');
+
+        let movingElement = null; // 当前正在拖动的元素
+        let flip;
+
+        list.ondragstart = function (e) {
+            setTimeout(() => {
+                e.target.classList.add('moving');
+            }, 0);
+            e.dataTransfer.effectAllowed = 'move';
+            movingElement = e.target;
+            flip = new Flip(list.children);
+        };
+
+        list.ondragend = function (e) {
+            movingElement.classList.remove('moving');
+        };
+
+        list.ondragenter = function (e) {
+            e.preventDefault();
+            if (e.target === movingElement || e.target === list) {
+                return;
+            }
+            const items = Array.from(list.children);
+            const movingIndex = items.indexOf(movingElement);
+            const targetIndex = items.indexOf(e.target);
+            if (movingIndex < targetIndex) {
+                list.insertBefore(movingElement, e.target.nextElementSibling);
+            } else {
+                list.insertBefore(movingElement, e.target);
+            }
+            flip.play();
+        };
+
+        list.ondragover = function (e) {
+            e.preventDefault();
+        };
+    </script>
+</body>
+</html>
