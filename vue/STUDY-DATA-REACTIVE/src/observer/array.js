@@ -45,4 +45,4 @@ methodsToPatch.forEach(method => {
 
         return result;
     })
-})
+});
