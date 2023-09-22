@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三角形</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --clr: #222327;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background: var(--clr);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .triangle {
+            width: 400px;
+            height: 300px;
+            background: #ffffff;
+            clip-path: polygon(0px 300px, 200px 0px, 400px 300px);
+        }
+    </style>
+</head>
+<body>
+    <div class="triangle"></div>
+</body>
+</html>
