@@ -2,7 +2,7 @@ import { vnode } from './vnode'
 import * as is from './is'
 
 export function h (sel, b, c) {
-    let data
+    let data = {}
     let children
     let text
 
