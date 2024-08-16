@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数字滑动选择控件</title>
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          /* 方便演示，满屏居中 */
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #222237;
+          /* 溢出隐藏 */
+          overflow: hidden;
+          /* 禁止选取 */
+          user-select: none;
+        }
+
+        ul {
+          width: 100%;
+        }
+
+        ul li {
+          list-style: none;
+          font-size: 40px;
+          text-align: center;
+          height: 60px;
+          line-height: 60px;
+        }
+
+        .container {
+          width: 90vw;
+          max-width: 400px;
+          height: 300px;
+          position: relative;
+          display: flex;
+          justify-content: center;
+          /* 光标为抓手 */
+          cursor: grab;
+          border-radius: 8px;
+          /* 内阴影 */
+          box-shadow: inset 0 0 50px 0 rgba(0, 0, 0, 0.5);
+          /* 蒙版，自上而下：透明-白色-透明 */
+          -webkit-mask: linear-gradient(to bottom, transparent, #000, transparent)
+        }
+
+        .container.grabbing {
+          /* 光标为握拳 */
+          cursor: grabbing;
+        }
+
+        /* 未选项 */
+        .picker {
+          color: #3b3b60;
+          width: 100%;
+          display: flex;
+          /* --top为css的自定义属性，可通过var函数对其调用 */
+          --top: 0;
+          transform: translateY(calc(var(--top) * 1px));
+        }
+
+        /* 选中项（高亮） */
+        .clip {
+          width: 100%;
+          height: 60px;
+          position: absolute;
+          top: 120px;
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+          color: blue;
+        }
+
+        /* 左边三角形 */
+        .clip::before {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          border-left: 16px solid blue;
+          border-top: 8px solid transparent;
+          border-bottom: 8px solid transparent;
+          border-right: none;
+          top: 50%;
+          transform: translateY(-50%);
+          left: calc(50% - 80px);
+        }
+
+        /* 右边三角形 */
+        .clip::after {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          border-left: none;
+          border-top: 8px solid transparent;
+          border-bottom: 8px solid transparent;
+          border-right: 16px solid blue;
+          top: 50%;
+          transform: translateY(-50%);
+          right: calc(50% - 80px);
+        }
+
+        .clip .wrapper {
+          margin-top: -120px;
+          /* --num为css的自定义属性，可通过var函数对其调用 */
+          --num: 0;
+          transform: translateY(calc(var(--num) * -60px));
+        }
+
+        .transition {
+          /* 过渡 */
+          transition: transform 0.35s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+      <div class="picker">
+        <ul>
+          <li>00</li>
+          <li>01</li>
+          <li>02</li>
+          <li>03</li>
+          <li>04</li>
+          <li>05</li>
+          <li>06</li>
+          <li>07</li>
+          <li>08</li>
+          <li>09</li>
+          <li>10</li>
+        </ul>
+      </div>
+      <div class="clip">
+        <div class="wrapper">
+          <ul>
+            <li>00</li>
+            <li>01</li>
+            <li>02</li>
+            <li>03</li>
+            <li>04</li>
+            <li>05</li>
+            <li>06</li>
+            <li>07</li>
+            <li>08</li>
+            <li>09</li>
+            <li>10</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const picker = document.querySelector('.picker'),
+        wrapper = document.querySelector('.wrapper');
+
+      // 事件处理 
+      function eventHandler (e) {
+        e.bubbles = false; // 默认跳过冒泡
+        let event = null,
+          tmp = null;
+        // 判断事件类型
+        switch (e.type) {
+          case 'mousedown':
+            // 创建自定义事件：slidestart
+            event = new CustomEvent('slidestart')
+            tmp = 'screenY' in e ? e : e.touches[0]
+            break
+          case 'mousemove':
+            // 创建自定义事件：sliding
+            event = new CustomEvent('sliding')
+            tmp = 'screenY' in e ? e : e.touches[0]
+            break
+          case 'mouseup':
+            // 创建自定义事件：slidestart
+            event = new CustomEvent('slideend')
+            tmp = 'screenY' in e ? e : e.touches[0]
+            break
+        }
+        /* 初始化自定义事件 */
+        event.y = tmp.screenY
+        event.original = e
+        /* 触发自定义事件 */
+        this.dispatchEvent(event)
+      }
+
+      let startY = 0,
+        moveY = 0,
+        disY = 0,
+        dragable = false,
+        times = 0;
+
+      let length = picker.querySelectorAll('li').length
+
+      picker.parentElement.addEventListener('slidestart', function ({ y }) {
+        dragable = true
+        startY = y
+        picker.classList.remove('transition')
+        wrapper.classList.remove('transition')
+        this.classList.add('grabbing')
+      })
+
+      document.addEventListener('sliding', function ({ y }) {
+        if (!dragable) {
+          return
+        }
+        moveY = y
+        disY = moveY - startY
+        let value = picker.style.getPropertyValue('--top') * 1
+        value += disY + (Math.abs(disY) >= 0.5 ? times : 1)
+
+        let num = -value / 60
+        picker.style.setProperty('--top', value)
+        wrapper.style.setProperty('--num', num)
+
+        startY = moveY
+      })
+
+      document.addEventListener('slideend', function ({ y }) {
+        if (!dragable) {
+          return
+        }
+        moveY = y
+        const maxTop = (length - 3) * 60
+        disY = moveY - startY
+        let value = picker.style.getPropertyValue('--top') * 1
+        value += disY
+
+        picker.classList.add('transition')
+        wrapper.classList.add('transition')
+
+        value = Math.min(120, Math.max(-maxTop, Math.round(value / 60) * 60))
+        picker.style.setProperty('--top', value)
+        wrapper.style.setProperty('--num', Math.round(-value / 60))
+        picker.parentElement.classList.remove('grabbing')
+
+        startY = moveY
+        dragable = false
+      })
+
+      picker.parentElement.addEventListener('mousedown', eventHandler)
+      document.addEventListener('mousemove', eventHandler)
+      document.addEventListener('mouseup', eventHandler)
+    </script>
+</body>
+</html>
